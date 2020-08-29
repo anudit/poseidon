@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ocean Protocol - Data Token Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#7b1173">
+    <meta name="msapplication-TileColor" content="#7b1173">
+
+    <link rel="shortcut icon" href="images/favicon-white.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-white.png">
+    <link rel="mask-icon" href="images/favicon-white.png" color="#7b1173">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" media="all" href="css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="css/foundation.css">
+
+  </head>
+  <body>
+    <!-- BEGIN page -->
+    <div class="page">
+      <!-- BEGIN header -->
+      <header class="header header-main">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+              <div class="navbar-logo">
+                <img class="navbar-pic" src="images/favicon-white.png">
+              </div>
+              <div class="navbar-group">
+                <div class="navbar-title">Ocean Protocol</div>
+                <div class="navbar-text">Data Token Manager</div>
+              </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Learn</a>
+                </li>
+
+              </ul>
+              <div class="btn btn-primary" id="walletDetails">Your Wallet</div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="inner"  style="overflow: none;"">
+        <svg id="waves" width="100%" height="500"/>
+        <div class="section">
+          <div class="container">
+            <div class="center">
+              <div class="title title-2">Create a New DataToken</div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-md-5 mb-4 mb-lg-0">
+                <figure class="preview">
+                  <img class="preview-pic" src="images/choose.png"  alt="">
+                </figure>
+              </div>
+              <div class="col-md-7 col-xl-6">
+                <div class="title title-3">Just enter the download link to your file.</div>
+                <div class="subscribe">
+                  <div class="subscribe-form">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Link to your file" required="" id="link">
+                    </div>
+                    <button class="btn btn-primary" onclick="create()" id="createBtn">Create</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer" style="position: fixed;bottom: 0;width: 100%;line-height: 40px;background-color: #fff;">
+        <div class="footer-down">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <nav class="footer-nav">
+                  <a href="https://anudit.dev" class="footer-link">Made with ❤️ by Anudit Nagar</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/d3.v6.min.js"></script>
+    <script src="js/lib/web3@1.2.11.js"></script>
+
+    <script src="js/globals.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/create.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

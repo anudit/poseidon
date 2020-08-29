@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ocean Protocol - Data Token Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#7b1173">
+    <meta name="msapplication-TileColor" content="#7b1173">
+
+    <link rel="shortcut icon" href="images/favicon-white.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-white.png">
+    <link rel="mask-icon" href="images/favicon-white.png" color="#7b1173">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" media="all" href="css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="css/foundation.css">
+
+  </head>
+  <body>
+    <!-- BEGIN page -->
+    <div class="page">
+      <!-- BEGIN header -->
+      <header class="header header-main">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+              <div class="navbar-logo">
+                <img class="navbar-pic" src="images/favicon-white.png">
+              </div>
+              <div class="navbar-group">
+                <div class="navbar-title">Ocean Protocol</div>
+                <div class="navbar-text">Data Token Manager</div>
+              </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Learn</a>
+                </li>
+
+              </ul>
+              <div class="btn btn-primary" id="walletDetails">Your Wallet</div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="inner"  style="overflow: none;"">
+        <svg id="waves" width="100%" height="500" />
+        <div class="section">
+          <div class="container">
+            <div class="center">
+              <div class="title title-2">Dashboard</div>
+            </div>
+            <div class="row mb-100">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-preview">
+                    <img class="card-pic" src="images/choose.png" alt="" style="height:200px;">
+                  </div>
+                  <div class="card-text">Create new Data Tokens</div>
+                  <div class="card-foot">
+                    <button class="btn btn-primary" onclick="window.location = './create.html'">
+                        Create
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-preview">
+                    <img class="card-pic" src="images/manage.png" alt="" style="height:200px;">
+                  </div>
+                  <div class="card-text">Manage your Data Tokens</div>
+                  <div class="card-foot">
+                    <button class="btn btn-primary"  onclick="window.location = './manage.html'">
+                        Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-preview">
+                    <img class="card-pic" src="images/balancer.png" alt="" style="height:200px;">
+                  </div>
+                  <div class="card-text">Trade your Data Tokens</div>
+                  <div class="card-foot">
+                    <button class="btn btn-primary">
+                        Soon
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer" style="position: fixed;bottom: 0;width: 100%;line-height: 40px;background-color: #fff;">
+        <div class="footer-down">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <nav class="footer-nav">
+                  <a href="https://anudit.dev" class="footer-link">Made with ❤️ by Anudit Nagar</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/d3.v6.min.js"></script>
+    <script src="js/lib/web3@1.2.11.js"></script>
+
+    <script src="js/globals.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
