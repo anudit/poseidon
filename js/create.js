@@ -16,7 +16,12 @@ function create(e){
     let createBtn = document.querySelector('#createBtn');
     createBtn.innerText = "Aww Yuss";
     createBtn.classList.add('disabled');
-    createDataToken(document.querySelector('#link').value).then(()=>{
+    createDataToken(
+        document.querySelector('#inp_name').value,
+        document.querySelector('#inp_sym').value,
+        document.querySelector('#inp_cap').value,
+        document.querySelector('#inp_blob').value,
+    ).then(()=>{
         createBtn.classList.remove('disabled');
         createBtn.innerText = "Done!";
     }).catch((e)=>{

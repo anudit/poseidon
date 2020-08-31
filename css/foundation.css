@@ -1434,7 +1434,7 @@ textarea.form-control {
     }
 
     .center {
-        margin-bottom: 90px;
+        /* margin-bottom: 90px; */
     }
 
     .vacancy {
@@ -1452,7 +1452,7 @@ textarea.form-control {
     }
 
     .vacancy-item:hover {
-        background: #0247e2;
+        background: #7b1173;
         color: #fff
     }
 

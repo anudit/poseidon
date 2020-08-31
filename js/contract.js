@@ -1,8 +1,8 @@
 
-async function createDataToken(_link = ''){
+async function createDataToken(_name ='', _symbol ='', _cap ='', _blob = ''){
     let promise = new Promise((res, rej) => {
 
-        DTFactory.methods.createToken(_link).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        DTFactory.methods.createToken(_blob, _name, _symbol, _cap).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -24,7 +24,20 @@ async function getUserDataTokens(_address = web3.currentProvider.selectedAddress
             toBlock: 'latest'
         })
         .then((events) => {
-            res(events);
+            let datatokensRegistered = [];
+            events.forEach((event)=>{
+                datatokensRegistered.push({
+                    blob: event.returnValues.blob,
+                    registeredAt: event.returnValues.registeredAt,
+                    registeredBy: event.returnValues.registeredBy,
+                    tokenAddress: event.returnValues.tokenAddress,
+                    tokenCap: event.returnValues.tokenCap,
+                    tokenName: event.returnValues.tokenName,
+                    tokenSymbol: event.returnValues.tokenSymbol
+                })
+            })
+            res(datatokensRegistered)
+
         })
         .catch(function(error){
            rej(error);
