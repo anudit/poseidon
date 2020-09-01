@@ -13,7 +13,7 @@ async function refreshUI(){
     getUserDataTokens().then((tokens)=>{
         tokens.forEach(token => {
             let html =  `
-                <a href="./manage-token.html?add=tokenAddress" class="vacancy-item">
+                <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item">
                     <div class="vacancy-title">${token.tokenName}</div>
                     <div class="vacancy-text">${trimAddress(token.tokenAddress)}</div>
                     <div class="vacancy-arrow">

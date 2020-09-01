@@ -939,7 +939,8 @@ textarea.form-control {
     display: flex;
     min-height: 100%;
     padding: 30px 15px;
-    border: 0;
+    /* border: 0; */
+    border-width:2px;
     border-radius: 8px;
     text-align: center;
     -webkit-box-orient: vertical;
