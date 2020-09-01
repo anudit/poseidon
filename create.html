@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarDropdown">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" href="https://docs.oceanprotocol.com/" target="_blank">Learn</a>
+                  <a class="nav-link active" href="https://docs.oceanprotocol.com/" target="_blank" rel="noreferrer">Learn</a>
                 </li>
 
               </ul>
@@ -66,14 +66,22 @@
                 <div class="subscribe">
                   <div class="subscribe-form">
                     <div class="form-group">
+                      <label for="inp_name">Name of your Token</label>
                       <input class="form-control" type="text" placeholder="Name of your Token" required="" id="inp_name" />
                       <br/>
+
+                      <label for="inp_sym">Symbol of your Token</label>
                       <input class="form-control" type="text" placeholder="Symbol of your Token" required="" id="inp_sym" />
                       <br/>
+
+                      <label for="inp_cap">Total Market Cap</label>
                       <input class="form-control" type="number" placeholder="Total Market Cap" required="" id="inp_cap" />
                       <br/>
+
+                      <label for="inp_blob">Link to your Data Token file</label>
                       <input class="form-control" type="text" placeholder="Link to your Data Token file" required="" id="inp_blob" />
                       <br/>
+
                       <button class="btn btn-primary" onclick="create()" id="createBtn">Create</button>
                     </div>
                   </div>
