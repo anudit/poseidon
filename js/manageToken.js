@@ -15,6 +15,9 @@ async function init(accounts = []){
     }
     else{
         document.querySelector('#walletDetails').innerText = trimAddress(accounts[0]);
+        document.querySelector('#walletDetails').addEventListener("click", ()=>{
+            copyAddress(document.querySelector('#walletDetails'), accounts[0])
+        });
     }
 
 }
@@ -45,3 +48,22 @@ async function approve(){
 
     dataTokenAllowance(pageTokenData.tokenAddress, spender, amt);
 }
+
+async function transfer(){
+    let receiver = document.querySelector('#inp_transferAddress').value;
+    let amt = document.querySelector('#inp_transferAmount').value;
+
+    dataTokenTransfer(pageTokenData.tokenAddress, receiver, amt);
+}
+
+async function explore(){
+    let blobData = await dataTokenBlob(pageTokenData.tokenAddress);
+    Swal.fire({
+        icon: 'info',
+        title: 'DataToken Blob Storage',
+        html: `
+            <code>${blobData}</code>
+        `,
+    });
+}
+

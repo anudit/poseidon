@@ -4,6 +4,7 @@ body {
     color: #2b292d;
     line-height: 1.25;
     font-display: swap;
+    background:#f7f7f7;
 }
 
 body.touch-device .nav-drop.visible {
@@ -121,7 +122,7 @@ textarea.form-control {
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle,.show>.btn-primary.dropdown-toggle {
-    background: #26339b
+    background: #7b1173
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle {
@@ -1586,3 +1587,34 @@ textarea.form-control {
 }
 
 }
+
+.slide-top {
+	-webkit-animation: slide-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: slide-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes slide-top {
+    0% {
+        opacity: 0;
+      -webkit-transform: translateY(100px);
+              transform: translateY(100px);
+    }
+    100% {
+        opacity: 100;
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+  }
+  @keyframes slide-top {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 100;
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+    }
+  }
+

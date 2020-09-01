@@ -137,12 +137,12 @@ async function dataTokenBalanceOf(_tokenAddress, _account = web3.currentProvider
     return web3.utils.fromWei(result);
 }
 
-async function dataToken(_tokenAddress, _account = web3.currentProvider.selectedAddress){
+async function dataTokenTransfer(_tokenAddress, _to, _amt){
     let promise = new Promise((res, rej) => {
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.balanceOf(_account).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.balanceOf(_to, web3.utils.toWei(_amt)).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -171,4 +171,22 @@ async function dataTokenCap(_tokenAddress){
     });
     let result = await promise;
     return web3.utils.fromWei(result);
+}
+
+async function dataTokenBlob(_tokenAddress){
+    let promise = new Promise((res, rej) => {
+
+        dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
+
+        dataTokenContract.methods.blob().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        });
+
+    });
+    let result = await promise;
+    return result;
 }

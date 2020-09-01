@@ -5,6 +5,7 @@ async function init(accounts = []){
     }
     else{
         document.querySelector('#walletDetails').innerText = trimAddress(accounts[0]);
+        document.querySelector('#walletDetails').addEventListener("click", copyAddress(document.querySelector('#walletDetails'), accounts[0]));
     }
 }
 

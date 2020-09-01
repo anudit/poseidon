@@ -93,8 +93,6 @@ function setupWaves(){
     return d(angles)
     })
     })
-
-
 }
 
 
@@ -131,4 +129,46 @@ function abbreviateNumber(value) {
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function copyAddress(_btn, _add){
+    copyToClipboard(_add);
+    _btn.innerText = 'Copied';
+    setTimeout(()=>{
+        document.querySelector('#walletDetails').innerText = trimAddress(_add);
+    }, 1000)
+}
+
+function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        return clipboardData.setData("Text", text);
+    }
+    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");
+        }
+        catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        }
+        finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
+function loadingQuote(){
+    const quotes = [
+        "Your patience is much appreciated.",
+        "Part of the pleasure is the build up. Are you ready?",
+        "If you're happy and you know it, clap your hands!",
+        "Dehydration is your worst enemy. Drink up while this page loads.",
+        "Here's your chance to catch a few blinks.",
+    ]
+    return quotes[Math.floor(Math.random() * quotes.length)];
 }
