@@ -22,7 +22,7 @@ async function init(accounts = []){
 async function refreshUI(_tokenData){
     window.pageTokenData = _tokenData;
 
-    document.querySelector('#token_name').innerText = `${_tokenData.tokenName} (${_tokenData.tokenSymbol})`;
+    document.querySelector('#token_name').innerText = ` ${_tokenData.tokenName} (${_tokenData.tokenSymbol})`;
     dataTokenBalanceOf(_tokenData.tokenAddress).then((balance)=>{
         document.querySelector('#token_bal').innerText = numberWithCommas(parseFloat(balance).toFixed(3));
     })
