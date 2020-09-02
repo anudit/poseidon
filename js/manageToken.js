@@ -67,3 +67,33 @@ async function explore(){
     });
 }
 
+
+async function addToMetamask(){
+    const tokenAddress = pageTokenData.tokenAddress;
+    const tokenSymbol = pageTokenData.tokenSymbol;
+    const tokenDecimals = 18;
+    const tokenImage = `https://api.kwelo.com/v1/media/identicon/${pageTokenData.tokenAddress}`;
+
+    try {
+    const wasAdded = await ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+        type: 'ERC20', // Initially only supports ERC20, but eventually more!
+        options: {
+            address: tokenAddress,
+            symbol: tokenSymbol,
+            decimals: tokenDecimals,
+            image: tokenImage,
+        },
+        },
+    });
+
+    if (wasAdded) {
+        swal.fire('All Done.');
+    } else {
+        swal.fire('Maybe Next Time.');
+    }
+    } catch (error) {
+        swal.fire(error);
+    }
+}
