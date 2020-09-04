@@ -8,7 +8,16 @@ async function createDataToken(_name ='', _symbol ='', _cap ='', _blob = ''){
             else{
                 rej(error);
             }
-        });
+        }).on('receipt', (receipt) => {
+            console.log('receipt');
+          }).on('confirmation', (confirmationNumber, receipt) => {
+            console.log('confirmation');
+          }).on('error', (err) => {
+            console.log(err);
+          }).then( (receipt) => {
+              console.log(receipt);
+            window.location=`./manage-token.html?add=${receipt.events.InstanceDeployed.returnValues.instance}`
+          })
 
     });
     let result = await promise;

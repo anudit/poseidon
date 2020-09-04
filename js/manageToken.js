@@ -81,7 +81,7 @@ async function addToMetamask(){
         type: 'ERC20', // Initially only supports ERC20, but eventually more!
         options: {
             address: tokenAddress,
-            symbol: tokenSymbol,
+            symbol: tokenSymbol.slice(0, 6),
             decimals: tokenDecimals,
             image: tokenImage,
         },
@@ -94,6 +94,6 @@ async function addToMetamask(){
         swal.fire('Maybe Next Time.');
     }
     } catch (error) {
-        swal.fire(error);
+        swal.fire(error.message);
     }
 }

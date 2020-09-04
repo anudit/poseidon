@@ -6,6 +6,12 @@ if (typeof window.ethereum !== 'undefined') {
 
 window.addEventListener('load', async () => {
     setupWaves();
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
     if (window.ethereum) {
 
         let accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -171,4 +177,13 @@ function loadingQuote(){
         "Here's your chance to catch a few blinks.",
     ]
     return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+
+function alertInfo(title="", text="", type=""){
+    Swal.fire({
+        icon: type,
+        title: title,
+        text: text
+    })
 }

@@ -23,8 +23,7 @@ function create(e){
         document.querySelector('#inp_cap').value,
         document.querySelector('#inp_blob').value,
     ).then(()=>{
-        createBtn.classList.remove('disabled');
-        createBtn.innerText = "Done!";
+        createBtn.innerText = "Txn is being Mined...";
     }).catch((e)=>{
         alert(e.message);
         createBtn.classList.remove('disabled');
