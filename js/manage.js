@@ -27,7 +27,7 @@ async function refreshUI(){
             document.querySelector('#tokenList').innerHTML = "";
             tokens.forEach(token => {
                 let html =  `
-                    <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item slide-top">
+                    <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item slide-top filter-token" data-name="${token.tokenName}">
                         <div class="vacancy-title">${token.tokenName}</div>
                         <div class="vacancy-text">${trimAddress(token.tokenAddress)}</div>
                         <div class="vacancy-arrow">
@@ -39,12 +39,25 @@ async function refreshUI(){
 
                 document.querySelector('#tokenList').innerHTML+=html;
             });
+            document.querySelector('#search').style.display ='block';
+            document.querySelector('#search').addEventListener("input",function () {
+                filterTokens(document.querySelector('#search').value);
+            })
         }
 
     })
 
 }
 
-async function getTokenDetails(){
-
-}
+function filterTokens(searchString) {
+    var x, i;
+    x = document.querySelectorAll(".filter-token");
+    x.forEach((e)=>{
+        if (searchString=="" || e.getAttribute("data-name").toLowerCase().includes(searchString.toLowerCase()) === true){
+            e.style.display = 'flex';
+        }
+        else{
+            e.style.display = 'none';
+        }
+    })
+  }

@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/foundation.css">
-
+    <link rel="stylesheet" href="css/trade.css">
   </head>
   <body>
     <!-- BEGIN page -->
@@ -55,84 +55,96 @@
         <svg id="waves" width="100%" height="500"/>
         <div class="section">
           <div class="container">
-            <div class="center">
-              <h1 class="title title-2 slide-top">Manage <span id="token_name"></span></h1>
-            </div>
-            <div class="row mb-4">
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                      <h1 class="card-title" id="token_bal"> ... </h1>
-                    </div>
-                    <div class="card-text">Your Balance</div>
+            <div class="d-flex justify-content-center">
+              <div class="card text-white mb-3" style="max-width: 470px;">
+                  <!-- <div class="card-header">Header</div> -->
+                  <div class="card-body">
+                      <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;">
+                      <br/>
+                          <li class="nav-item" style=" width: 150px; margin-left: 0; " role="presentation">
+                              <a class="nav-link" id="pills-node-tab" data-toggle="pill" href="#pills-node" role="tab" aria-controls="pills-node" aria-selected="true">
+                                Fixed Rate
+                              </a>
+                          </li>
+                          <li class="nav-item" style=" width: 150px; margin-left: 0; " role="presentation">
+                              <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="true">
+                                Variable Rate
+                              </a>
+                          </li>
+                      </ul>
+                      <div class="tab-content" id="pills-tabContent">
+                          <div class="tab-pane fade" id="pills-node" role="tabpanel" aria-labelledby="pills-node-tab">
+                              <div class="container container-border">
+                                  <div class="row">
+                                      <div class="text-muted text-left">
+                                          Staking
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <input class="form-control" type="number" placeholder="Name of your Token" required="" id="inp_name" />
+                                      <br />
+                                      <p class="text-secondary">
+                                          Current Stake <span> 0 ETH</span>
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="container">
+                                  <br />
+                                  <div class="row">
+                                      <button type="button" class="btn btn-primary btn-lg btn-block">Stake</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+                              <div class="container container-border">
+                                  <div class="row">
+                                      <div class="col-6 text-muted text-left">
+                                          New Address
+                                          </div>
+                                          <div class="col-6 text-muted text-right">
+                                              <span class="badge rounded-pill bg-secondary" style="padding: 5px;cursor: pointer;">
+                                                  Use from Wallet
+                                              </span>
+                                          </div>
+                                  </div>
+                                  <div class="row">
+                                      <input type="text" id ="newethadd" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0x0" />
+                                      <br />
+                                      <p class="text-secondary">
+                                          Current -
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="container">
+                                  <br />
+                                  <div class="row">
+                                      <button type="button" onclick="updateEthAddress()" class="btn btn-primary btn-lg btn-block">Update Address</button>
+                                  </div>
+                              </div>
+                              <br/><br/>
+                              <div class="container container-border">
+                                  <div class="row">
+                                      <div class="text-muted text-left">
+                                          New Hostname
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <input type="text" id="newhostname" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="https://domain.io" />
+                                      <br />
+                                      <p class="text-secondary">
+                                          Current -
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="container">
+                                  <br />
+                                  <div class="row">
+                                      <button type="button" onclick="updateHostName()" class="btn btn-primary btn-lg btn-block">Update Hostname</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                        <h1 class="card-title" id="token_cap"> ... </h1>
-                    </div>
-                    <div class="card-text">Token Cap</div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                      <button class="btn btn-primary" onclick="explore()">View</button>
-                    </div>
-                    <div class="card-text">Stored Data</div>
-                  </div>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                        <h2 class="card-text"> Mint Tokens </h2>
-                        <br/>
-                        <label for="inp_mintToAmount" class="form-label">Amount to Mint</label>
-                        <input class="form-control" type="number" placeholder="Amount to Mint" required="" id="inp_mintToAmount" />
-                        <label for="inp_mintToAddress" class="form-label">To Address</label>
-                        <input class="form-control" type="text" placeholder="To Address" required="" id="inp_mintToAddress" />
-                    </div>
-                    <button class="btn btn-primary" onclick="mint()" id="mintBtn">Mint</button>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                        <h2 class="card-text"> Give Allowance </h2>
-                        <br/>
-                        <label for="inp_spenderAddress" class="form-label">Allowance Amount</label>
-                        <input class="form-control" type="number" placeholder="Allowance Amount" required="" id="inp_spenderAddress" />
-                        <label for="inp_allowanceAmount" class="form-label">Spender Address</label>
-                        <input class="form-control" type="text" placeholder="Spender Address" required="" id="inp_allowanceAmount" />
-                    </div>
-                    <button class="btn btn-primary" onclick="approve()" id="approveBtn">Approve</button>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card slide-top">
-                    <div class="card-preview">
-                        <h2 class="card-text"> Transfer Tokens </h2>
-                        <br/>
-                        <label for="inp_transferAddress" class="form-label">Transfer Amount</label>
-                        <input class="form-control" type="number" placeholder="Transfer Amount" required="" id="inp_transferAddress" />
-                        <label for="inp_transferAmount" class="form-label">Receiver Address</label>
-                        <input class="form-control" type="text" placeholder="Receiver Address" required="" id="inp_transferAmount" />
-                    </div>
-                    <button class="btn btn-primary" onclick="transfer()" id="transferBtn">Transfer</button>
-                  </div>
-                </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-md-4">
-                <div class="card slide-top">
-                  <div class="card-preview">
-                    <button class="btn btn-primary" onclick="addToMetamask()">Add Now</button>
-                  </div>
-                  <div class="card-text">Add to Wallet</div>
-                </div>
               </div>
           </div>
           </div>
@@ -153,14 +165,14 @@
         </div>
       </footer>
     </div>
-    <script src="js/lib/web3@1.2.11.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/d3.v6.min.js"></script>
     <script src="js/lib/sweetalert2@9.js"></script>
+    <script src="js/lib/web3@1.2.11.js"></script>
 
     <script src="js/globals.js"></script>
     <script src="js/contract.js"></script>
-    <script src="js/manageToken.js"></script>
+    <script src="js/trade.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

@@ -37,19 +37,25 @@ window.addEventListener('load', async () => {
 
 async function setupApp(provider, accounts = []){
     window.web3 = new Web3(provider);
-    provider.on('disconnect', ()=>{
-        window.location.reload()
-    });
-    provider.on('chainChanged', ()=>{
-        window.location.reload()
-    });
-    provider.on('accountsChanged', ()=>{
-        window.location.reload()
-    });
+    if (provider.on){
+        provider.on('disconnect', ()=>{
+            window.location.reload()
+        });
+        provider.on('chainChanged', ()=>{
+            window.location.reload()
+        });
+        provider.on('accountsChanged', ()=>{
+            window.location.reload()
+        });
+    }
 
     let netId = await web3.eth.net.getId();
     if(netId !== 4){
-        alert("Please switch to Rinkeby");
+        Swal.fire({
+            icon: 'error',
+            title: "Incorrect Network",
+            text: "Please switch to Rinkeby"
+        });
     }
     else{
         DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address);
