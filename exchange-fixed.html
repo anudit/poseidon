@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/trade.css">
+
+    <link rel="stylesheet" href="css/choices.css" />
   </head>
   <body>
     <!-- BEGIN page -->
@@ -56,46 +58,126 @@
         <div class="section">
           <div class="container">
             <div class="d-flex justify-content-center">
-              <div class="card text-white mb-3" style="max-width: 470px;">
+              <div class="card text-white mb-3" style="max-width: 530px;">
                   <!-- <div class="card-header">Header</div> -->
                   <div class="card-body">
-                      <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;">
-                      <br/>
-                          <li class="nav-item" style=" width: 150px; margin-left: 0; " role="presentation">
-                              <a class="nav-link" id="pills-node-tab" data-toggle="pill" href="#pills-node" role="tab" aria-controls="pills-node" aria-selected="true">
-                                Fixed Rate
+                      <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;background: #eaeaea;padding: 5px 7px;border-radius: 100px;">
+
+                          <li class="nav-item" style=" margin-left: 0; " role="presentation">
+                              <a class="nav-link active" id="pills-swap-tab" data-toggle="pill" href="#pills-swap" role="tab" aria-controls="pills-swap" aria-selected="true">
+                                Create
                               </a>
                           </li>
-                          <li class="nav-item" style=" width: 150px; margin-left: 0; " role="presentation">
-                              <a class="nav-link active" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="true">
-                                Variable Rate
+                          <li class="nav-item" style=" margin-left: 0; " role="presentation">
+                            <a class="nav-link" id="pills-manage-tab" data-toggle="pill" href="#pills-manage" role="tab" aria-controls="pills-manage" aria-selected="true">
+                              Manage
+                            </a>
+                          </li>
+                          <li class="nav-item" style=" margin-left: 0; " role="presentation">
+                              <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="true">
+                                Swap
                               </a>
                           </li>
                       </ul>
                       <div class="tab-content" id="pills-tabContent">
-                          <div class="tab-pane fade" id="pills-node" role="tabpanel" aria-labelledby="pills-node-tab">
+                          <div class="tab-pane fade show active" id="pills-swap" role="tabpanel" aria-labelledby="pills-swap-tab">
                               <div class="container container-border">
                                   <div class="row">
                                       <div class="text-muted text-left">
-                                          Staking
+                                        Choose a DataToken
                                       </div>
                                   </div>
                                   <div class="row">
-                                      <input class="form-control" type="number" placeholder="Name of your Token" required="" id="inp_name" />
-                                      <br />
-                                      <p class="text-secondary">
-                                          Current Stake <span> 0 ETH</span>
-                                      </p>
+                                    <label for="dataTokenList"></label>
+                                    <select class="form-control" id="dataTokenList" required="" >
+                                      <option value="">Choose a DataToken</option>
+                                    </select>
                                   </div>
+
                               </div>
+                              <br/>
+                              <div class="container container-border">
+                                <div class="row">
+                                    <div class="text-muted text-left">
+                                      Choose an Exchange Token
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <label for="tokenList"></label>
+                                  <select class="form-control" id="tokenList" required="" >
+                                    <option value="">Choose a Token</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                <div class="text-muted text-left">
+                                  Choose an Exchange Rate
+                                </div>
+                            </div>
+                              <div class="row">
+                                <label for="exRate"></label>
+                                  <input type="number" id ="exRate" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0.0" />
+                              </div>
+                          </div>
+
+                          <br />
                               <div class="container">
-                                  <br />
                                   <div class="row">
-                                      <button type="button" class="btn btn-primary btn-lg btn-block">Stake</button>
+                                      <button type="button" class="btn btn-primary btn-lg btn-block">Create Exchange</button>
                                   </div>
                               </div>
                           </div>
-                          <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+                          <div class="tab-pane fade" id="pills-manage" role="tabpanel" aria-labelledby="pills-manage-tab">
+                            <div class="container container-border">
+                                <div class="row">
+                                    <div class="col-6 text-muted text-left">
+                                        New Address
+                                        </div>
+                                        <div class="col-6 text-muted text-right">
+                                            <span class="badge rounded-pill bg-secondary" style="padding: 5px;cursor: pointer;">
+                                                Use from Wallet
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <input type="text" id ="newethadd" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0x0" />
+                                    <br />
+                                    <p class="text-secondary">
+                                        Current -
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <br />
+                                <div class="row">
+                                    <button type="button" onclick="updateEthAddress()" class="btn btn-primary btn-lg btn-block">Update Address</button>
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div class="container container-border">
+                                <div class="row">
+                                    <div class="text-muted text-left">
+                                        New Hostname
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <input type="text" id="newhostname" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="https://domain.io" />
+                                    <br />
+                                    <p class="text-secondary">
+                                        Current -
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <br />
+                                <div class="row">
+                                    <button type="button" onclick="updateHostName()" class="btn btn-primary btn-lg btn-block">Update Hostname</button>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
                               <div class="container container-border">
                                   <div class="row">
                                       <div class="col-6 text-muted text-left">
@@ -146,7 +228,7 @@
                       </div>
                   </div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
@@ -169,10 +251,12 @@
     <script src="js/lib/d3.v6.min.js"></script>
     <script src="js/lib/sweetalert2@9.js"></script>
     <script src="js/lib/web3@1.2.11.js"></script>
+    <script src="js/lib/choices.min.js"></script>
 
     <script src="js/globals.js"></script>
     <script src="js/contract.js"></script>
-    <script src="js/trade.js"></script>
+    <script src="js/exchangeFixed.js"></script>
     <script src="js/index.js"></script>
+
   </body>
 </html>

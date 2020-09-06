@@ -56,43 +56,38 @@
         <div class="section">
           <div class="container">
             <div class="center">
-              <h1 class="title title-2 slide-top">Dashboard</h1>
+              <h1 class="title title-2">Exchange your DataTokens</h1>
             </div>
             <div class="row mb-100">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="card slide-top">
-                  <div class="card-preview">
-                    <img class="card-pic" src="images/create2.png" alt="" style="height:300px;">
+                  <div>
+                    <img class="card-pic" src="images/exchange-fixed.png" alt="" style="height:250px;">
                   </div>
-                  <div class="card-text">Create new Data Tokens</div>
+                  <h3>Fixed Rate Exchange</h3>
+                  <br/>
                   <div class="card-foot">
-                    <button class="btn btn-primary" onclick="window.location = './create.html'">
-                        Create
+                    <button class="btn btn-primary" onclick="showInfo('fixed')">
+                      Details
+                    </button>
+                    <button class="btn btn-primary" onclick="window.location = './exchange-fixed.html'">
+                      Exchange
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="card slide-top">
-                  <div class="card-preview">
-                    <img class="card-pic" src="images/manage2.png" alt="" style="height:300px;">
+                  <div>
+                    <img class="card-pic" src="images/exchange-variable.png" alt="" style="height:250px;">
                   </div>
-                  <div class="card-text">Manage your Data Tokens</div>
+                  <h3>Variable Rate Exchange</h3>
+                  <br/>
                   <div class="card-foot">
-                    <button class="btn btn-primary" onclick="window.location = './manage.html'">
-                        Manage
+                    <button class="btn btn-primary" onclick="showInfo('variable')">
+                      Details
                     </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card slide-top">
-                  <div class="card-preview">
-                    <img class="card-pic" src="images/exchange.png" alt="" style="height:300px;">
-                  </div>
-                  <div class="card-text">Exchange your Data Tokens</div>
-                  <div class="card-foot">
-                    <button class="btn btn-primary" onclick="window.location = './exchange.html'">
+                    <button class="btn btn-primary" onclick="window.location = './exchange-variable.html'">
                       Exchange
                     </button>
                   </div>
@@ -123,7 +118,8 @@
     <script src="js/lib/web3@1.2.11.js"></script>
 
     <script src="js/globals.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="js/contract.js"></script>
+    <script src="js/exchange.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

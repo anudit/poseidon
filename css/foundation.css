@@ -319,11 +319,6 @@ textarea.form-control {
     position: relative
 }
 
-.nav-link {
-    font-size: 22px;
-    color: #2b292d
-}
-
 .nav-link.active {
     font-weight: 700
 }
@@ -1154,7 +1149,29 @@ textarea.form-control {
     margin-bottom: 60px
 }
 
+.nav-item {
+    width: 87px;
+}
+
+.nav-link {
+    text-align: center;
+    font-size: 15px;
+    color: #2b292d;
+}
+
+
 @media (min-width: 768px) {
+
+    .nav-item {
+        width: 120px;
+    }
+    .nav-link {
+        text-align: center;
+        font-size: 20px;
+        color: #2b292d;
+    }
+
+
     .btn-group-simple .btn {
         width:auto;
         margin: 0 4px 0 0

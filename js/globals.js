@@ -869,3 +869,399 @@ const DataTokenTemplate_ABI = [
 ]
 
 const DTFactory_Address = '0x3ECd1429101f93149D799Ef257C07a2B1Dc30897';
+
+const FixedRateExchange_ABI =  [
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "baseToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "dataToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "exchangeOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "fixedRate",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "exchangeOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "newRate",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeRateChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "exchangeOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeActivated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "exchangeOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeDeactivated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "by",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "baseTokenSwappedAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "dataTokenSwappedAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Swapped",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "baseToken",
+        "type": "address"
+      },
+      {
+        "name": "dataToken",
+        "type": "address"
+      },
+      {
+        "name": "fixedRate",
+        "type": "uint256"
+      }
+    ],
+    "name": "create",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "baseToken",
+        "type": "address"
+      },
+      {
+        "name": "dataToken",
+        "type": "address"
+      },
+      {
+        "name": "exchangeOwner",
+        "type": "address"
+      }
+    ],
+    "name": "generateExchangeId",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "name": "dataTokenAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "CalcInGivenOut",
+    "outputs": [
+      {
+        "name": "baseTokenAmount",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "name": "dataTokenAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "swap",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getNumberOfExchanges",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      },
+      {
+        "name": "newRate",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRate",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "activate",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "deactivate",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getSupply",
+    "outputs": [
+      {
+        "name": "supply",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getExchange",
+    "outputs": [
+      {
+        "name": "exchangeOwner",
+        "type": "address"
+      },
+      {
+        "name": "dataToken",
+        "type": "address"
+      },
+      {
+        "name": "baseToken",
+        "type": "address"
+      },
+      {
+        "name": "fixedRate",
+        "type": "uint256"
+      },
+      {
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "name": "supply",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getExchanges",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "exchangeId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "isActive",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
+
+const FixedRateExchange_Address = '0x991c08bD00761A299d3126a81a985329096896D4';
