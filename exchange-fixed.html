@@ -23,9 +23,7 @@
     <link rel="stylesheet" href="css/choices.css" />
   </head>
   <body>
-    <!-- BEGIN page -->
-    <div class="page">
-      <!-- BEGIN header -->
+  <div class="page">
       <header class="header header-main">
         <div class="container">
           <nav class="navbar navbar-expand-lg">
@@ -59,9 +57,8 @@
           <div class="container">
             <div class="d-flex justify-content-center">
               <div class="card text-white mb-3" style="max-width: 530px;">
-                  <!-- <div class="card-header">Header</div> -->
                   <div class="card-body">
-                      <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;background: #eaeaea;padding: 5px 7px;border-radius: 100px;">
+                      <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;background: #f9f9f9;padding: 5px 7px;border-radius: 100px;">
 
                           <li class="nav-item" style=" margin-left: 0; " role="presentation">
                               <a class="nav-link active" id="pills-swap-tab" data-toggle="pill" href="#pills-swap" role="tab" aria-controls="pills-swap" aria-selected="true">
@@ -74,7 +71,7 @@
                             </a>
                           </li>
                           <li class="nav-item" style=" margin-left: 0; " role="presentation">
-                              <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="true">
+                              <a class="nav-link" id="pills-exchange-tab" data-toggle="pill" href="#pills-exchange" role="tab" aria-controls="pills-exchange" aria-selected="true">
                                 Swap
                               </a>
                           </li>
@@ -89,8 +86,8 @@
                                   </div>
                                   <div class="row">
                                     <label for="dataTokenList"></label>
-                                    <select class="form-control" id="dataTokenList" required="" >
-                                      <option value="">Choose a DataToken</option>
+                                    <select class="form-control" id="dataTokenList" required=""  style="border:none;">
+                                      <option value="">Fetching Tokens...</option>
                                     </select>
                                   </div>
 
@@ -99,13 +96,13 @@
                               <div class="container container-border">
                                 <div class="row">
                                     <div class="text-muted text-left">
-                                      Choose an Exchange Token
+                                      Choose a Base Token
                                     </div>
                                 </div>
                                 <div class="row">
                                   <label for="tokenList"></label>
-                                  <select class="form-control" id="tokenList" required="" >
-                                    <option value="">Choose a Token</option>
+                                  <select class="form-control" id="tokenList" required=""  style="border:none;">
+                                    <option value="">Choose a Base Token</option>
                                   </select>
                                 </div>
                             </div>
@@ -118,112 +115,107 @@
                             </div>
                               <div class="row">
                                 <label for="exRate"></label>
-                                  <input type="number" id ="exRate" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0.0" />
+                                  <input type="number" id ="exRate" class="form-control form-control-lg" aria-label="" style="" placeholder="0.0" />
                               </div>
                           </div>
 
                           <br />
                               <div class="container">
                                   <div class="row">
-                                      <button type="button" class="btn btn-primary btn-lg btn-block">Create Exchange</button>
+                                      <button type="button" class="btn btn-primary btn-lg btn-block" onclick='createEx()'>Create Exchange</button>
                                   </div>
                               </div>
                           </div>
                           <div class="tab-pane fade" id="pills-manage" role="tabpanel" aria-labelledby="pills-manage-tab">
                             <div class="container container-border">
-                                <div class="row">
-                                    <div class="col-6 text-muted text-left">
-                                        New Address
-                                        </div>
-                                        <div class="col-6 text-muted text-right">
-                                            <span class="badge rounded-pill bg-secondary" style="padding: 5px;cursor: pointer;">
-                                                Use from Wallet
-                                            </span>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <input type="text" id ="newethadd" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0x0" />
-                                    <br />
-                                    <p class="text-secondary">
-                                        Current -
-                                    </p>
-                                </div>
+                              <div class="row">
+                                  <div class="text-muted text-left">
+                                    Choose an Exchange
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <label for="manageExchangeList"></label>
+                                <select class="form-control" id="manageExchangeList" required=""  style="border:none;">
+                                  <option value="">Loading...</option>
+                                </select>
+                              </div>
                             </div>
+                            <br/>
                             <div class="container">
-                                <br />
-                                <div class="row">
-                                    <button type="button" onclick="updateEthAddress()" class="btn btn-primary btn-lg btn-block">Update Address</button>
-                                </div>
+                              <div class="row">
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='enableExchangeUI()'>Enable Exchange</button>
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='disableExchangeUI()'>Disable Exchange</button>
+                              </div>
                             </div>
-                            <br/><br/>
+                            <br/>
                             <div class="container container-border">
-                                <div class="row">
-                                    <div class="text-muted text-left">
-                                        New Hostname
-                                    </div>
+                              <div class="row">
+                                <div class="text-muted text-left">
+                                  Change Exchange Rate
                                 </div>
-                                <div class="row">
-                                    <input type="text" id="newhostname" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="https://domain.io" />
-                                    <br />
-                                    <p class="text-secondary">
-                                        Current -
-                                    </p>
+                              </div>
+                              <div class="row">
+                                <label for="newExRate"></label>
+                                <input type="number" id ="newExRate" class="form-control form-control-lg" aria-label="" style="" placeholder="0.0" />
+                              </div>
+                              <div class="row">
+                                <div class="text-muted text-left text-small">
+                                  Current Rate - <span id="manageExCurrentRate">0</span>
                                 </div>
+                              </div>
                             </div>
+                            <br/>
                             <div class="container">
-                                <br />
-                                <div class="row">
-                                    <button type="button" onclick="updateHostName()" class="btn btn-primary btn-lg btn-block">Update Hostname</button>
-                                </div>
+                              <div class="row">
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='setExchangeRateUI()'>Set New Exchange Rate</button>
+                              </div>
                             </div>
-                        </div>
-                          <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-                              <div class="container container-border">
-                                  <div class="row">
-                                      <div class="col-6 text-muted text-left">
-                                          New Address
-                                          </div>
-                                          <div class="col-6 text-muted text-right">
-                                              <span class="badge rounded-pill bg-secondary" style="padding: 5px;cursor: pointer;">
-                                                  Use from Wallet
-                                              </span>
-                                          </div>
-                                  </div>
-                                  <div class="row">
-                                      <input type="text" id ="newethadd" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="0x0" />
-                                      <br />
-                                      <p class="text-secondary">
-                                          Current -
-                                      </p>
+                            <br/>
+                          </div>
+                          <div class="tab-pane fade" id="pills-exchange" role="tabpanel" aria-labelledby="pills-exchange-tab">
+
+                            <div class="container">
+                              <div class="alert alert-warning" role="alert">
+                                You'll need to send two transactions. First to <b>Approve</b> and the second to <b>Swap</b>.
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="text-muted text-left">
+                                    Choose an Exchange
                                   </div>
                               </div>
-                              <div class="container">
-                                  <br />
-                                  <div class="row">
-                                      <button type="button" onclick="updateEthAddress()" class="btn btn-primary btn-lg btn-block">Update Address</button>
-                                  </div>
+                              <div class="row">
+                                <label for="fromExchangeList"></label>
+                                <select class="form-control" id="fromExchangeList" required=""  style="border:none;">
+                                  <option value="">Choose an Exchange</option>
+                                </select>
                               </div>
-                              <br/><br/>
-                              <div class="container container-border">
-                                  <div class="row">
-                                      <div class="text-muted text-left">
-                                          New Hostname
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <input type="text" id="newhostname" class="form-control form-control-lg" aria-label="Text input with dropdown button" style="" placeholder="https://domain.io" />
-                                      <br />
-                                      <p class="text-secondary">
-                                          Current -
-                                      </p>
-                                  </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                <div class="text-muted text-left">
+                                  Enter <span id="selectedSwapDataTokenName">DataToken</span> Amount
+                                </div>
                               </div>
-                              <div class="container">
-                                  <br />
-                                  <div class="row">
-                                      <button type="button" onclick="updateHostName()" class="btn btn-primary btn-lg btn-block">Update Hostname</button>
-                                  </div>
+                              <div class="row">
+                                <label for="swapDataTokenAmount"></label>
+                                <input type="number" id ="swapDataTokenAmount" class="form-control form-control-lg" aria-label="" style="" placeholder="0.0" />
                               </div>
+                              <div class="row">
+                                <div class="text-muted text-left text-small">
+                                  <span id="selectedSwapBaseTokenName">Base Tokens</span> Required - <span id="swapTokensRequired">0</span>
+                                </div>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container">
+                              <div class="row">
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='exchangeTokensUI()'>Swap</button>
+                              </div>
+                            </div>
                           </div>
                       </div>
                   </div>

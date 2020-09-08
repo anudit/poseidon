@@ -320,7 +320,7 @@ textarea.form-control {
 }
 
 .nav-link.active {
-    font-weight: 700
+    font-weight: 400;
 }
 
 .accordion-head:hover .accordion-icon svg,.accordion-item.active .accordion-icon svg,.nav-link:hover .nav-arrow {

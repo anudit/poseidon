@@ -1,4 +1,5 @@
 let DTFactory;
+let FixedRateExchange;
 
 if (typeof window.ethereum !== 'undefined') {
     ethereum.autoRefreshOnNetworkChange = false;
@@ -59,6 +60,7 @@ async function setupApp(provider, accounts = []){
     }
     else{
         DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address);
+        FixedRateExchange = new web3.eth.Contract(FixedRateExchange_ABI, FixedRateExchange_Address);
         init(accounts);
     }
 
@@ -192,4 +194,8 @@ function alertInfo(title="", text="", type=""){
         title: title,
         text: text
     })
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
