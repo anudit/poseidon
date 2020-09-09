@@ -235,6 +235,69 @@ async function erc20Symbol(_tokenAddress, _account = web3.currentProvider.select
     return result;
 }
 
+
+async function erc20Allowance(_tokenAddress, _owner, _spender){
+    let promise = new Promise((res, rej) => {
+
+        tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
+
+        tokenContract.methods.allowance(_owner, _spender).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        });
+
+    });
+    let result = await promise;
+    return web3.utils.fromWei(result);
+}
+
+async function erc20Approve(_tokenAddress, _spender, _amount, control = null){
+    let promise = new Promise((res, rej) => {
+
+        tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
+
+        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        }).on('receipt', (receipt) => {
+            console.log('ERC20Token/erc20Approve/receipt\t', receipt);
+        }).on('confirmation', (confirmationNumber, receipt) => {
+            if (confirmationNumber<=1){
+                if (control !== null){
+                    control.innerText = 'Approve Exchange';
+                    control.clasList.remove('disabled');
+                }
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucessful',
+                    html: `${_amount} tokens approved for expenditure.`,
+                    backdrop: `rgba(0,0,123,0.4)
+                        url("/images/nyan-cat.gif")
+                        left top
+                        no-repeat
+                    `
+                });
+            }
+        }).on('error', (err) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Transaction Error',
+                html: err.message,
+            });
+            console.log(err);
+        })
+
+    });
+    let result = await promise;
+    return result;
+}
+
 async function getTokenDetails(_add){
     const tokenDetails = await Promise.all([
         erc20Name(_add),

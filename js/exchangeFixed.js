@@ -20,8 +20,30 @@ async function init(accounts = []){
 async function refreshUI(){
 
     document.getElementById("manageExchangeList").addEventListener("change", async ()=> {
-        let selectedEx_ExRate = await getExchangeRate(document.querySelector('#manageExchangeList').value);
-        document.querySelector('#manageExCurrentRate').innerHTML = selectedEx_ExRate;
+        let selectedExId = document.querySelector('#manageExchangeList').value;
+
+        getExchangeData(selectedExId).then(async (exchangeData)=>{
+
+            console.log(exchangeData);
+
+            let manageExApprovalBtn = document.querySelector('#manageExAppBtn');
+            manageExApprovalBtn.onclick = function(){
+                let amt=document.querySelector('#manageExAppAmt').value;
+                erc20Approve(exchangeData.dataToken.tokenAddress, FixedRateExchange_Address, amt, manageExApprovalBtn).then(()=>{
+                    manageExApprovalBtn.classList.add('disabled');
+                    manageExApprovalBtn.innerText ='Processing Txn ...';
+                })
+            };
+
+            getExchangeRate(selectedExId).then((selectedEx_ExRate)=>{
+                document.querySelector('#manageExCurrentRate').innerHTML = `1 ${exchangeData.dataToken.tokenName} = ${selectedEx_ExRate} ${exchangeData.baseToken.tokenName}`;
+            });
+
+            erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address).then((allowance)=>{
+                document.querySelector('#manageExAllowance').innerHTML = `${allowance} ${exchangeData.dataToken.tokenSymbol}` ;
+            });
+
+        })
     });
 
     document.getElementById("fromExchangeList").addEventListener("change", async ()=> {

@@ -143,8 +143,12 @@
                             <br/>
                             <div class="container">
                               <div class="row">
-                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='enableExchangeUI()'>Enable Exchange</button>
-                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='disableExchangeUI()'>Disable Exchange</button>
+                                <div class="col-6">
+                                  <button type="button" class="btn btn-primary btn-block" onclick='enableExchangeUI()' style=" font-size: 13px;padding: 10px;">Enable Exchange</button>
+                                </div>
+                                <div class="col-6">
+                                  <button type="button" class="btn btn-primary btn-block" onclick='disableExchangeUI()' style=" font-size: 13px;padding: 10px;">Disable Exchange</button>
+                                </div>
                               </div>
                             </div>
                             <br/>
@@ -171,6 +175,28 @@
                               </div>
                             </div>
                             <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                <div class="text-muted text-left">
+                                  Approve Exchange
+                                </div>
+                              </div>
+                              <div class="row">
+                                <label for="manageExAppAmt"></label>
+                                <input type="number" id ="manageExAppAmt" class="form-control form-control-lg" aria-label="" style="" placeholder="0.0" />
+                              </div>
+                              <div class="row">
+                                <div class="text-muted text-left text-small">
+                                  Current Allowance - <span id="manageExAllowance">0</span>
+                                </div>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container">
+                              <div class="row">
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" id="manageExAppBtn">Approve Exchange</button>
+                              </div>
+                            </div>
                           </div>
                           <div class="tab-pane fade" id="pills-exchange" role="tabpanel" aria-labelledby="pills-exchange-tab">
 
