@@ -46,7 +46,7 @@ async function approve(){
     let spender = document.querySelector('#inp_spenderAddress').value;
     let amt = document.querySelector('#inp_allowanceAmount').value;
 
-    dataTokenAllowance(pageTokenData.tokenAddress, spender, amt);
+    dataTokenApprove(pageTokenData.tokenAddress, spender, amt);
 }
 
 async function transfer(){

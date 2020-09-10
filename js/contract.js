@@ -108,7 +108,7 @@ async function dataTokenMint(_tokenAddress, _account , _amt){
     return result;
 }
 
-async function dataTokenAllowance(_tokenAddress, _spender , _amt){
+async function dataTokenApprove(_tokenAddress, _spender , _amt){
     let promise = new Promise((res, rej) => {
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
@@ -119,6 +119,45 @@ async function dataTokenAllowance(_tokenAddress, _spender , _amt){
             else{
                 rej(error);
             }
+        });
+
+    });
+    let result = await promise;
+    return result;
+}
+
+async function baseTokenApproveAndSwap(_exchangeId, _basetokenAddress, _spender , _allowanceAmt, _swapAmt){
+    let promise = new Promise((res, rej) => {
+        let ctrlBtn = document.querySelector('#swapBtn');
+
+        baseTokenContract = new web3.eth.Contract(ERC20Token_ABI, _basetokenAddress);
+        console.log(`Approving ${_allowanceAmt}`);
+        baseTokenContract.methods.approve(_spender, web3.utils.toWei((_allowanceAmt).toString())).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        }).on('receipt', (receipt) => {
+            console.log('baseTokenContract/baseTokenApproveAndSwap/receipt\t', receipt);
+            ctrlBtn.innerText  = 'Swapping Tokens';
+            ctrlBtn.classList.add('disabled');
+
+            if (confirmationNumber==1){
+                exchangeSwap(_exchangeId, _swapAmt);
+            }
+
+        }).on('confirmation', (confirmationNumber, receipt) => {
+
+        }).on('error', (err) => {
+            ctrlBtn.innerText  = 'Swap';
+            ctrlBtn.classList.remove('disabled');
+            Swal.fire({
+                icon: 'error',
+                title: 'Transaction Error',
+                html: err.message,
+            });
+            console.log(err);
         });
 
     });
@@ -347,24 +386,21 @@ async function getExchangesCreated(_userAddress = null){
 async function getExchangeData(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.getPastEvents('ExchangeCreated', {
-            filter: {exchangeId: _exchangeId},
-            fromBlock: 7114953,
-            toBlock: 'latest'
-        })
-        .then(async (events) => {
-            let event = events[0];
-            let data = {
-                exchangeOwner: event.returnValues.exchangeOwner,
-                exchangeId: event.returnValues.exchangeId,
-                baseToken: await getTokenDetails(event.returnValues.baseToken),
-                dataToken: await getTokenDetails(event.returnValues.dataToken),
-                fixedRate: parseFloat(web3.utils.fromWei(event.returnValues.fixedRate)),
+        FixedRateExchange.methods.getExchange(_exchangeId).call({from:web3.currentProvider.selectedAddress}, async function(error, result) {
+            if (!error){
+                let data = {
+                    exchangeOwner: result.exchangeOwner,
+                    exchangeId: _exchangeId,
+                    baseToken: await getTokenDetails(result.baseToken),
+                    dataToken: await getTokenDetails(result.dataToken),
+                    fixedRate: parseFloat(web3.utils.fromWei(result.fixedRate)),
+                    active: result.active
+                }
+                res(data);
             }
-            res(data);
-        })
-        .catch(function(error){
-           rej(error);
+            else{
+                rej(error);
+            }
         });
 
     });
@@ -525,52 +561,23 @@ async function disableExchange(_exchangeId){
     return result;
 }
 
-
-async function disableExchange(_exchangeId){
-    let promise = new Promise((res, rej) => {
-
-        FixedRateExchange.methods.activate(_exchangeId).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
-            if (!error)
-                res(result);
-            else{
-                rej(error);
-            }
-        }).on('receipt', (receipt) => {
-            console.log('FixedRateExchange/disableExchange/receipt\t', receipt);
-        }).on('confirmation', (confirmationNumber, receipt) => {
-            if (confirmationNumber<=1){
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Successful',
-                    html: `Exchange has been Disabled.`
-                });
-            }
-        }).on('error', (err) => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Transaction Error',
-                html: err.message,
-            });
-            console.log(err);
-        })
-
-    });
-    let result = await promise;
-    return result;
-}
-
 async function exchangeSwap(_exchangeId, _dataTokenAmount){
     let promise = new Promise((res, rej) => {
+        let ctrlBtn = document.querySelector('#swapBtn');
+        console.log(`To swap from ${_exchangeId} ${web3.utils.toWei((_dataTokenAmount).toString())}`);
 
-        FixedRateExchange.methods.swap(_exchangeId, _dataTokenAmount).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.swap(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
                 res(result);
             else{
                 rej(error);
             }
         }).on('receipt', (receipt) => {
+
             console.log('FixedRateExchange/exchangeTokensUI/receipt\t', receipt);
         }).on('confirmation', (confirmationNumber, receipt) => {
+            ctrlBtn.innerText  = 'Swap';
+            ctrlBtn.classList.remove('disabled');
             if (confirmationNumber<=1){
                 Swal.fire({
                     icon: 'success',
@@ -579,6 +586,8 @@ async function exchangeSwap(_exchangeId, _dataTokenAmount){
                 });
             }
         }).on('error', (err) => {
+            ctrlBtn.innerText  = 'Swap';
+            ctrlBtn.classList.remove('disabled');
             Swal.fire({
                 icon: 'error',
                 title: 'Transaction Error',
@@ -596,7 +605,10 @@ async function exchangeSwap(_exchangeId, _dataTokenAmount){
 async function swapCalcInGivenOut(_exchangeId, _dataTokenAmount){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.CalcInGivenOut(_exchangeId, web3.utils.toWei(_dataTokenAmount)).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        if(_dataTokenAmount === ''){
+            _dataTokenAmount = '0';
+        }
+        FixedRateExchange.methods.CalcInGivenOut(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
                 res(result);
             else {

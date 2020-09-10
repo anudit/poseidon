@@ -144,10 +144,10 @@
                             <div class="container">
                               <div class="row">
                                 <div class="col-6">
-                                  <button type="button" class="btn btn-primary btn-block" onclick='enableExchangeUI()' style=" font-size: 13px;padding: 10px;">Enable Exchange</button>
+                                  <button type="button" class="btn btn-primary btn-block disabled" id="enableExBtn" onclick='enableExchangeUI()' style=" font-size: 13px;padding: 10px;">Enable Exchange</button>
                                 </div>
                                 <div class="col-6">
-                                  <button type="button" class="btn btn-primary btn-block" onclick='disableExchangeUI()' style=" font-size: 13px;padding: 10px;">Disable Exchange</button>
+                                  <button type="button" class="btn btn-primary btn-block disabled" id="disableExBtn" onclick='disableExchangeUI()' style=" font-size: 13px;padding: 10px;">Disable Exchange</button>
                                 </div>
                               </div>
                             </div>
@@ -215,7 +215,7 @@
                               <div class="row">
                                 <label for="fromExchangeList"></label>
                                 <select class="form-control" id="fromExchangeList" required=""  style="border:none;">
-                                  <option value="">Choose an Exchange</option>
+                                  <option value="">Loading</option>
                                 </select>
                               </div>
                             </div>
@@ -239,7 +239,7 @@
                             <br/>
                             <div class="container">
                               <div class="row">
-                                  <button type="button" class="btn btn-primary btn-lg btn-block" onclick='exchangeTokensUI()'>Swap</button>
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" id="swapBtn" onclick='exchangeTokensUI()'>Swap</button>
                               </div>
                             </div>
                           </div>

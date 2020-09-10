@@ -20,11 +20,22 @@ async function init(accounts = []){
 async function refreshUI(){
 
     document.getElementById("manageExchangeList").addEventListener("change", async ()=> {
+
+        document.getElementById("enableExBtn").classList.add('disabled');
+        document.getElementById("disableExBtn").classList.add('disabled');
+
         let selectedExId = document.querySelector('#manageExchangeList').value;
 
         getExchangeData(selectedExId).then(async (exchangeData)=>{
-
             console.log(exchangeData);
+
+            if (exchangeData.active === true){
+                document.getElementById("disableExBtn").classList.remove('disabled');
+            }
+            else{
+                document.getElementById("enableExBtn").classList.remove('disabled');
+            }
+
 
             let manageExApprovalBtn = document.querySelector('#manageExAppBtn');
             manageExApprovalBtn.onclick = function(){
@@ -97,6 +108,10 @@ async function setupCreateExchangeUI(){
                     {
                         'label':'TESTToken',
                         'value':'0x22c4fea29916b7e06cc11fb83f044321c1d01c5f'
+                    },
+                    {
+                        'label':'OCEAN Token',
+                        'value':'0x8967bcf84170c91b0d24d4302c2376283b0b3a07'
                     }
                 ],
             }
@@ -207,7 +222,40 @@ function disableExchangeUI(){
     disableExchange(ex);
 }
 
-function exchangeTokensUI(){
+async function exchangeTokensUI(){
     let ex=document.querySelector('#fromExchangeList').value;
-    exchangeSwap(ex);
+    let dataTokenAmt=parseFloat(document.querySelector('#swapDataTokenAmount').value);
+    let baseTokenAmt= parseFloat(await swapCalcInGivenOut(ex, dataTokenAmt));
+    let ctrlBtn = document.querySelector('#swapBtn');
+    ctrlBtn.classList.add('disabled');
+
+    getExchangeData(ex).then(async (exchangeData)=>{
+        console.log(exchangeData)
+        let exAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address));
+        if (dataTokenAmt > exAllowanceAmt){
+            console.log(`Insufficient Allowance/${exAllowanceAmt}`)
+            Swal.fire({
+                icon: 'warning',
+                title: 'Insufficient Allowance',
+                html: `Exchange Owner has allowed only ${exAllowanceAmt.toFixed(3)} ${exchangeData.dataToken.tokenSymbol} to be spent which exceeds the value for this transaction. Please consider reducing your swap amount.`,
+            });
+            ctrlBtn.classList.remove('disabled');
+        }
+        else {
+            let userAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.baseToken.tokenAddress, web3.currentProvider.selectedAddress, FixedRateExchange_Address));
+            if(userAllowanceAmt >= baseTokenAmt ){
+                ctrlBtn.innerText  = 'Swapping Tokens';
+                ctrlBtn.classList.add('disabled');
+                await exchangeSwap(ex, dataTokenAmt);
+            }
+            else{
+                ctrlBtn.innerText  = 'Approving Tokens';
+                ctrlBtn.classList.add('disabled');
+                await baseTokenApproveAndSwap(exchangeData.exchangeId,  exchangeData.baseToken.tokenAddress, FixedRateExchange_Address, baseTokenAmt, dataTokenAmt);
+            }
+
+
+        }
+    })
+
 }
