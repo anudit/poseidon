@@ -70,23 +70,29 @@
                       <label for="inp_name" class="form-label">Name of your Token</label>
                       <input class="form-control" type="text" placeholder="Name of your Token" required="" id="inp_name" />
                       <br/>
-
-                      <label for="inp_sym" class="form-label">Symbol of your Token</label>
-                      <input class="form-control" type="text" placeholder="Symbol of your Token" required="" id="inp_sym" />
+                      <label for="inp_sym" class="form-label">
+                        Symbol of your Token&nbsp;
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Symbol of your Token',text: 'This is like a short name that will be used to identify your DataToken everywhere.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                      </label>
+                      <input class="form-control" type="text" placeholder="Symbol of your Token" required="" id="inp_sym" maxlength="6" size="6"/>
                       <br/>
 
                       <label for="inp_cap" class="form-label">
-                        Total Market Cap &nbsp;&nbsp;
-                        <svg onclick="Swal.fire({icon: 'info',title: 'Market Cap',text: 'This is the maximum number of Tokens that can be minted for your DataToken. This value cannot be changed later.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                        Total Supply &nbsp;
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Total Supply',text: 'This is the maximum number of Tokens that can be minted for your DataToken. This value cannot be changed later.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
                       </label>
-                      <input class="form-control" type="number" placeholder="Total Market Cap" required="" id="inp_cap" />
+                      <input class="form-control" type="number" placeholder="Total Supply" required="" id="inp_cap" />
                       <br/>
 
-                      <label for="inp_blob" class="form-label">Link to your Data Token file</label>
-                      <input class="form-control" type="text" placeholder="Link to your Data Token file" required="" id="inp_blob" />
+                      <label for="inp_blob" class="form-label">
+                        Link to your Data Token page&nbsp;
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Link to your Data Token file',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                      </label>
+                      <input class="form-control" type="text" placeholder="Enter your link" required="" id="inp_blob" />
                       <br/>
 
                       <button class="btn btn-primary" onclick="create()" id="createBtn">Create</button>
+                      <button class="btn btn-outline-secondary" onclick="clearInput()" id="clearBtn">Clear</button>
                     </div>
                   </div>
                 </div>
