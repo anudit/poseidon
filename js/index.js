@@ -59,8 +59,8 @@ async function setupApp(provider, accounts = []){
         });
     }
     else{
-        DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address);
-        FixedRateExchange = new web3.eth.Contract(FixedRateExchange_ABI, FixedRateExchange_Address);
+        DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address[netId]);
+        FixedRateExchange = new web3.eth.Contract(FixedRateExchange_ABI, FixedRateExchange_Address[netId]);
         init(accounts);
     }
 

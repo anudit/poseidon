@@ -155,7 +155,9 @@ const DTFactory_ABI = [
   }
 ];
 
-const DTFactory_Address = '0x3ECd1429101f93149D799Ef257C07a2B1Dc30897';
+const DTFactory_Address = {
+  '4':'0x3ECd1429101f93149D799Ef257C07a2B1Dc30897'
+};
 
 const DataTokenTemplate_ABI = [
   {
@@ -1266,4 +1268,6 @@ const FixedRateExchange_ABI =  [
   }
 ];
 
-const FixedRateExchange_Address = '0x991c08bD00761A299d3126a81a985329096896D4';
+const FixedRateExchange_Address = {
+  '4':'0x991c08bD00761A299d3126a81a985329096896D4'
+};

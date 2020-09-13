@@ -97,3 +97,7 @@ async function addToMetamask(){
         swal.fire(error.message);
     }
 }
+
+function etherscan(){
+    window.open(`https://rinkeby.etherscan.io/address/${pageTokenData.tokenAddress}`, '_blank');
+}

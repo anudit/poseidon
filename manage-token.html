@@ -121,15 +121,34 @@
                 </div>
             </div>
             <div class="row mb-4">
+              <h3 class="text-center slide-top">
+                Quick Actions
+              </h3>
+            </div>
+            <div class="row mb-4">
               <div class="col-md-4">
                 <div class="card slide-top">
                   <div class="card-preview">
-                    <button class="btn btn-primary" onclick="addToMetamask()">Add Now</button>
+                    <button class="btn btn-primary" onclick="addToMetamask()">
+                      <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px" style=" margin-top: -3px; "><path d="M12,2C6.477,2,2,6.477,2,12s4.477,10,10,10s10-4.477,10-10S17.523,2,12,2z M17,13h-4v4h-2v-4H7v-2h4V7h2v4h4V13z"/></svg>
+                    </button>
                   </div>
                   <div class="card-text">Add to Wallet</div>
                 </div>
               </div>
-          </div>
+              <div class="col-md-4">
+                <div class="card slide-top">
+                  <div class="card-preview">
+                    <button class="btn btn-primary" onclick="etherscan()">
+                      Open
+                      <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="20px" height="20px" style=" margin-top: -3px; "><path d="M 25.980469 2.9902344 A 1.0001 1.0001 0 0 0 25.869141 3 L 20 3 A 1.0001 1.0001 0 1 0 20 5 L 23.585938 5 L 13.292969 15.292969 A 1.0001 1.0001 0 1 0 14.707031 16.707031 L 25 6.4140625 L 25 10 A 1.0001 1.0001 0 1 0 27 10 L 27 4.1269531 A 1.0001 1.0001 0 0 0 25.980469 2.9902344 z M 6 7 C 4.9069372 7 4 7.9069372 4 9 L 4 24 C 4 25.093063 4.9069372 26 6 26 L 21 26 C 22.093063 26 23 25.093063 23 24 L 23 14 L 23 11.421875 L 21 13.421875 L 21 16 L 21 24 L 6 24 L 6 9 L 14 9 L 16 9 L 16.578125 9 L 18.578125 7 L 16 7 L 14 7 L 6 7 z"/></svg>
+                    </button>
+                  </div>
+                  <div class="card-text">View on Etherscan</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -157,5 +176,16 @@
     <script src="js/contract.js"></script>
     <script src="js/manageToken.js"></script>
     <script src="js/index.js"></script>
+
+    <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:1989177,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
   </body>
 </html>
