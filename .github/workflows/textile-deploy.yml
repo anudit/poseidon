@@ -20,7 +20,7 @@ jobs:
       with:
         key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
         secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-        bucket: "oceandt█"
+        bucket: "oceandt"
         thread: "bafkvhrnmx5yqlecrsn5pz7vvlw6y2akqeywvmcba7y47wx3xsyskpwy"
         path: "."
     - run: echo "bucket - ${{ steps.push.outputs.key  }}"
