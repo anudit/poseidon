@@ -1,5 +1,6 @@
 let DTFactory;
 let FixedRateExchange;
+let BPoolFactory;
 
 if (typeof window.ethereum !== 'undefined') {
     ethereum.autoRefreshOnNetworkChange = false;
@@ -51,6 +52,7 @@ async function setupApp(provider, accounts = []){
     }
 
     let netId = await web3.eth.net.getId();
+    window.netId = netId;
     if(netId !== 4){
         Swal.fire({
             icon: 'error',
@@ -61,6 +63,7 @@ async function setupApp(provider, accounts = []){
     else{
         DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address[netId]);
         FixedRateExchange = new web3.eth.Contract(FixedRateExchange_ABI, FixedRateExchange_Address[netId]);
+        BPoolFactory = new web3.eth.Contract(BPoolFactory_ABI, BPoolFactory_Address[netId])
         init(accounts);
     }
 

@@ -40,7 +40,7 @@ async function refreshUI(){
             let manageExApprovalBtn = document.querySelector('#manageExAppBtn');
             manageExApprovalBtn.onclick = function(){
                 let amt=document.querySelector('#manageExAppAmt').value;
-                erc20Approve(exchangeData.dataToken.tokenAddress, FixedRateExchange_Address, amt, manageExApprovalBtn).then(()=>{
+                erc20Approve(exchangeData.dataToken.tokenAddress, FixedRateExchange_Address[netId], amt, manageExApprovalBtn).then(()=>{
                     manageExApprovalBtn.classList.add('disabled');
                     manageExApprovalBtn.innerText ='Processing Txn ...';
                 })
@@ -50,7 +50,7 @@ async function refreshUI(){
                 document.querySelector('#manageExCurrentRate').innerHTML = `1 ${exchangeData.dataToken.tokenName} = ${selectedEx_ExRate} ${exchangeData.baseToken.tokenName}`;
             });
 
-            erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address).then((allowance)=>{
+            erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address[netId]).then((allowance)=>{
                 document.querySelector('#manageExAllowance').innerHTML = `${allowance} ${exchangeData.dataToken.tokenSymbol}` ;
             });
 
@@ -115,8 +115,9 @@ async function setupCreateExchangeUI(){
                     }
                 ],
             }
-        ,await fetch(
-          'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link'
+        ,
+        await fetch(
+          'https://defiprime.com/defiprime.tokenlist.json'
         )
         .then(function(response) {
             return response.json();
@@ -127,7 +128,7 @@ async function setupCreateExchangeUI(){
             });
             // console.log(retData);
             return {
-                label: '1inch',
+                label: 'DefiPrime TokenList',
                 id: 2,
                 disabled: false,
                 choices: retData,
@@ -145,7 +146,7 @@ async function setupCreateExchangeUI(){
               });
             //   console.log(retData);
               return {
-                label: 'CoinMarketCap Defi',
+                label: 'CoinMarketCap Defi TokenList',
                 id: 3,
                 disabled: false,
                 choices: retData,
@@ -231,7 +232,7 @@ async function exchangeTokensUI(){
 
     getExchangeData(ex).then(async (exchangeData)=>{
         console.log(exchangeData)
-        let exAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address));
+        let exAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.dataToken.tokenAddress, exchangeData.exchangeOwner, FixedRateExchange_Address[netId]));
         if (dataTokenAmt > exAllowanceAmt){
             console.log(`Insufficient Allowance/${exAllowanceAmt}`)
             Swal.fire({
@@ -242,7 +243,7 @@ async function exchangeTokensUI(){
             ctrlBtn.classList.remove('disabled');
         }
         else {
-            let userAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.baseToken.tokenAddress, web3.currentProvider.selectedAddress, FixedRateExchange_Address));
+            let userAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.baseToken.tokenAddress, web3.currentProvider.selectedAddress, FixedRateExchange_Address[netId]));
             if(userAllowanceAmt >= baseTokenAmt ){
                 ctrlBtn.innerText  = 'Swapping Tokens';
                 ctrlBtn.classList.add('disabled');
@@ -251,7 +252,7 @@ async function exchangeTokensUI(){
             else{
                 ctrlBtn.innerText  = 'Approving Tokens';
                 ctrlBtn.classList.add('disabled');
-                await baseTokenApproveAndSwap(exchangeData.exchangeId,  exchangeData.baseToken.tokenAddress, FixedRateExchange_Address, baseTokenAmt, dataTokenAmt);
+                await baseTokenApproveAndSwap(exchangeData.exchangeId,  exchangeData.baseToken.tokenAddress, FixedRateExchange_Address[netId], baseTokenAmt, dataTokenAmt);
             }
 
 

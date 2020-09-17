@@ -621,3 +621,84 @@ async function swapCalcInGivenOut(_exchangeId, _dataTokenAmount){
     return web3.utils.fromWei(result);
 }
 
+
+async function createBPool(ctrlBtn = null){
+    let promise = new Promise((res, rej) => {
+
+        BPoolFactory.methods.newBPool().send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error){
+                ctrlBtn.innerText  = 'Creating Pool...';
+                ctrlBtn.classList.add('disabled');
+                res(result);
+            }
+            else {
+                rej(error);
+            }
+        }).on('receipt', (receipt) => {
+            console.log('BPoolFactory/createBPool/receipt\t', receipt);
+        }).on('confirmation', (confirmationNumber, receipt) => {
+            ctrlBtn.innerText  = 'Create Pool';
+            ctrlBtn.classList.remove('disabled');
+            if (confirmationNumber<=1){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successful',
+                    html: `Balancer Pool Created`
+                });
+            }
+        }).on('error', (err) => {
+            ctrlBtn.innerText  = 'Create Pool';
+            ctrlBtn.classList.remove('disabled');
+            Swal.fire({
+                icon: 'error',
+                title: 'Transaction Error',
+                html: err.message,
+            });
+            console.log(err);
+        })
+
+    });
+    let result = await promise;
+    return result;
+}
+
+async function getPools(_userAddress = web3.currentProvider.selectedAddress){
+    let promise = new Promise((res, rej) => {
+
+        BPoolFactory.methods.newBPool().send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error){
+                ctrlBtn.innerText  = 'Creating Pool...';
+                ctrlBtn.classList.add('disabled');
+                res(result);
+            }
+            else {
+                rej(error);
+            }
+        }).on('receipt', (receipt) => {
+            console.log('BPoolFactory/createBPool/receipt\t', receipt);
+        }).on('confirmation', (confirmationNumber, receipt) => {
+            ctrlBtn.innerText  = 'Create Pool';
+            ctrlBtn.classList.remove('disabled');
+            if (confirmationNumber<=1){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successful',
+                    html: `Balancer Pool Created`
+                });
+            }
+        }).on('error', (err) => {
+            ctrlBtn.innerText  = 'Create Pool';
+            ctrlBtn.classList.remove('disabled');
+            Swal.fire({
+                icon: 'error',
+                title: 'Transaction Error',
+                html: err.message,
+            });
+            console.log(err);
+        })
+
+    });
+    let result = await promise;
+    return result;
+}
+
