@@ -702,3 +702,29 @@ async function getPools(_userAddress = web3.currentProvider.selectedAddress){
     return result;
 }
 
+
+async function getUserPools(_address = web3.currentProvider.selectedAddress){
+    let promise = new Promise((res, rej) => {
+
+        BPoolFactory.getPastEvents('BPoolRegistered', {
+            filter: {registeredBy: _address},
+            fromBlock: 7039273,
+            toBlock: 'latest'
+        })
+        .then((events) => {
+            let poolAddresses = [];
+            events.forEach((event)=>{
+                poolAddresses.push(event.returnValues.bpoolAddress)
+            })
+            console.log(poolAddresses);
+            res(poolAddresses)
+
+        })
+        .catch(function(error){
+           rej(error);
+        });
+
+    });
+    let result = await promise;
+    return result;
+}
