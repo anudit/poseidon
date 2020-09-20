@@ -88,7 +88,7 @@
 
                             <div class="container">
                               <div class="alert alert-warning" role="alert">
-                                You'll need to send three transactions to setup the Pool. First two to <b>Approve</b> and the third to <b>Bind</b>.
+                                You'll need to send three transactions. First <b>two to Approve</b> and the <b>third to Setup</b>.
                               </div>
                             </div>
                             <br/>
@@ -133,7 +133,7 @@
                                     Data Token Weight
                                     <br>
                                     <label for="dt_wght" class="form-label"></label>
-                                    <input class="form-control" type="number" placeholder="0" required="" id="dt_wght"style='text-align:center;' />
+                                    <input class="form-control" type="number" placeholder="0" required="" id="dt_wght"style='text-align:center;' min="0" max="50"/>
                                   </div>
                               </div>
                             </div>
@@ -164,26 +164,29 @@
                                     Base Token Weight
                                     <br>
                                     <label for="bt_wght" class="form-label"></label>
-                                    <input class="form-control" type="number" placeholder="0" required="" id="bt_wght"style='text-align:center;' />
+                                    <input class="form-control" type="number" placeholder="0" required="" id="bt_wght"style='text-align:center;' min="0" max="50"/>
                                   </div>
                               </div>
                             </div>
                             <br/>
                             <div class="container container-border">
                               <div class="row">
-                                  <div class="text-muted text-left">
-                                    Swap Fee
-                                  </div>
+                                <div class="col text-muted text-left">
+                                  Swap Fee
+                                </div>
+                                <div class="col text-muted text-right" style=" font-size: small; ">
+                                  Min Fee > 0 & Max Fee = 0.1
+                                </div>
                               </div>
                               <div class="row">
-                                <label for="inp_name" class="form-label"></label>
-                                <input class="form-control" type="number" placeholder="0" required="" id="dt_amt" style='text-align:center;'/>
+                                <label for="swap_fee" class="form-label"></label>
+                                <input class="form-control" type="number" placeholder="0" required="" id="swap_fee" style='text-align:center;' min="0.0000000000001" max="0.1"/>
                               </div>
                             </div>
                             <br/>
                             <div class="container">
                               <div class="row">
-                                  <button type="button" class="btn btn-primary btn-lg btn-block" id="setupPoolBtn" onclick='setupPool()'>Setup</button>
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" id="setupPoolBtn" onclick='setupPoolUI()'>Setup</button>
                               </div>
                             </div>
                           </div>
@@ -250,16 +253,7 @@
     <script src="js/exchangeVariable.js"></script>
     <script src="js/index.js"></script>
 
-    <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:1989177,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
+
 
   </body>
 </html>

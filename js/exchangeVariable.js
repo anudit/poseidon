@@ -118,7 +118,6 @@ async function setupPoolLists(){
 
 }
 
-
 async function swapPoolLists(){
     let poolList = document.querySelector('#managePoolsList');
 
@@ -134,6 +133,7 @@ async function swapPoolLists(){
     }
     managePoolsList_choiceElement = new Choices(poolList);
 }
+
 function viewOnBalancer(){
     let selectedPool = document.querySelector('#managePoolsList').value;
     if (selectedPool !== '') {
@@ -142,4 +142,47 @@ function viewOnBalancer(){
     else{
         alert('Please Select a Pool.')
     }
+}
+
+
+async function setupPoolUI(){
+
+    let poolAddress = document.querySelector('#setupPoolsList').value;
+    let dataTokenList = document.querySelector('#dataTokenList');
+    let baseTokenList = document.querySelector('#baseTokenList');
+    let swapFee = document.querySelector('#swap_fee').value;
+    let dt_wght = document.querySelector('#dt_wght').value;
+    let bt_wght = document.querySelector('#bt_wght').value;
+
+    if (parseFloat(swapFee) > 0 && parseFloat(swapFee) <= 0.1) {
+
+        if (parseInt(dt_wght) > 0 && parseInt(dt_wght) <= 50 &&
+            parseInt(bt_wght) > 0 && parseInt(bt_wght) <= 50
+        ) {
+
+            erc20ApproveP(dataTokenList.value, poolAddress, document.querySelector('#dt_amt').value).then(()=>{
+                erc20ApproveP(baseTokenList.value, poolAddress, document.querySelector('#bt_amt').value).then(()=>{
+                    setupPool(
+                        poolAddress,
+                        dataTokenList.value, document.querySelector('#dt_amt').value, dt_wght,
+                        baseTokenList.value, document.querySelector('#bt_amt').value, bt_wght,
+                        document.querySelector('#swap_fee').value
+                    )
+                }).catch((e)=>{
+                    alert(e.message)
+                })
+            }).catch((e)=>{
+                alert(e.message)
+            })
+
+        }
+        else{
+            alert('Weights have to be less than 50')
+        }
+    }
+    else{
+        alert('Swap Fee has to be between 0 & 0.1')
+    }
+
+
 }

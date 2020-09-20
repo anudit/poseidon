@@ -337,6 +337,23 @@ async function erc20Approve(_tokenAddress, _spender, _amount, control = null){
     return result;
 }
 
+async function erc20ApproveP(_tokenAddress, _spender, _amount){
+    let promise = new Promise((res, rej) => {
+
+        tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
+
+        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        })
+    });
+    let result = await promise;
+    return result;
+}
+
 async function getTokenDetails(_add){
     const tokenDetails = await Promise.all([
         erc20Name(_add),
@@ -735,6 +752,39 @@ async function isPoolFinalized(_poolAddress){
         poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
 
         poolContract.methods.isFinalized().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        });
+
+    });
+    let result = await promise;
+    return result;
+}
+
+
+async function setupPool(_poolAddress,
+    _dataTokenAddress, _dataTokenAmount, _dataTokenWeight,
+    _baseTokenAddress, _baseTokenAmount, _baseTokenWeight,
+    _swapFee
+    ){
+
+    let promise = new Promise((res, rej) => {
+
+        console.log(_poolAddress,
+            _dataTokenAddress, _dataTokenAmount, _dataTokenWeight,
+            _baseTokenAddress, _baseTokenAmount, _baseTokenWeight,
+            _swapFee)
+
+        poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
+
+        poolContract.methods.setup(
+            _dataTokenAddress, web3.utils.toWei(_dataTokenAmount), web3.utils.toWei(_dataTokenWeight),
+            _baseTokenAddress, web3.utils.toWei(_baseTokenAmount), web3.utils.toWei(_baseTokenWeight),
+            web3.utils.toWei(_swapFee)
+        ).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
                 res(result);
             else{

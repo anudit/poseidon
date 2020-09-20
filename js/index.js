@@ -1,6 +1,7 @@
 let DTFactory;
 let FixedRateExchange;
 let BPoolFactory;
+let BPool;
 
 if (typeof window.ethereum !== 'undefined') {
     ethereum.autoRefreshOnNetworkChange = false;
@@ -64,6 +65,7 @@ async function setupApp(provider, accounts = []){
         DTFactory = new web3.eth.Contract(DTFactory_ABI, DTFactory_Address[netId]);
         FixedRateExchange = new web3.eth.Contract(FixedRateExchange_ABI, FixedRateExchange_Address[netId]);
         BPoolFactory = new web3.eth.Contract(BPoolFactory_ABI, BPoolFactory_Address[netId])
+        BPool = new web3.eth.Contract(BPool_ABI, BPool_Address[netId])
         init(accounts);
     }
 
