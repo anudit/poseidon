@@ -728,3 +728,21 @@ async function getUserPools(_address = web3.currentProvider.selectedAddress){
     let result = await promise;
     return result;
 }
+
+async function isPoolFinalized(_poolAddress){
+    let promise = new Promise((res, rej) => {
+
+        poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
+
+        poolContract.methods.isFinalized().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        });
+
+    });
+    let result = await promise;
+    return result;
+}

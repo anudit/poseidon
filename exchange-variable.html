@@ -61,9 +61,14 @@
                       <ul class="nav nav-pills mb-3 mx-auto" id="pills-tab" role="tablist" style="width: fit-content;background: #f9f9f9;padding: 5px 7px;border-radius: 100px;">
 
                           <li class="nav-item" style=" margin-left: 0; " role="presentation">
-                              <a class="nav-link active" id="pills-swap-tab" data-toggle="pill" href="#pills-swap" role="tab" aria-controls="pills-swap" aria-selected="true">
+                              <a class="nav-link " id="pills-swap-tab" data-toggle="pill" href="#pills-swap" role="tab" aria-controls="pills-swap" aria-selected="true">
                                 Create
                               </a>
+                          </li>
+                          <li class="nav-item" style=" margin-left: 0; " role="presentation">
+                            <a class="nav-link active" id="pills-setup-tab" data-toggle="pill" href="#pills-setup" role="tab" aria-controls="pills-setup" aria-selected="true">
+                              Setup
+                            </a>
                           </li>
                           <li class="nav-item" style=" margin-left: 0; " role="presentation">
                             <a class="nav-link" id="pills-manage-tab" data-toggle="pill" href="#pills-manage" role="tab" aria-controls="pills-manage" aria-selected="true">
@@ -72,19 +77,128 @@
                           </li>
                       </ul>
                       <div class="tab-content" id="pills-tabContent">
-                          <div class="tab-pane fade show active" id="pills-swap" role="tabpanel" aria-labelledby="pills-swap-tab">
+                          <div class="tab-pane fade" id="pills-swap" role="tabpanel" aria-labelledby="pills-swap-tab">
                               <div class="container">
                                   <div class="row">
-                                      <button type="button" class="btn btn-primary btn-lg btn-block" onclick='createBPool(this)'>Create Pool</button>
+                                      <button type="button" class="btn btn-primary btn-lg btn-block" onclick='createBPool(this)'>Create a Balancer Pool</button>
                                   </div>
                               </div>
                           </div>
-                          <div class="tab-pane fade" id="pills-manage" role="tabpanel" aria-labelledby="pills-manage-tab">
+                          <div class="tab-pane fade show active" id="pills-setup" role="tabpanel" aria-labelledby="pills-setup-tab">
+
+                            <div class="container">
+                              <div class="alert alert-warning" role="alert">
+                                You'll need to send three transactions to setup the Pool. First two to <b>Approve</b> and the third to <b>Bind</b>.
+                              </div>
+                            </div>
+                            <br/>
                             <div class="container container-border">
                               <div class="row">
                                   <div class="text-muted text-left">
                                     Choose a Pool
                                   </div>
+                              </div>
+                              <div class="row">
+                                <label for="setupPoolsList"></label>
+                                <select class="form-control" id="setupPoolsList" required=""  style="border:none;">
+                                  <option value="">Loading</option>
+                                </select>
+                              </div>
+                            </div>
+                            <br/>
+
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="text-muted text-left">
+                                    Choose a DataToken
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <label for="dataTokenList"></label>
+                                <select class="form-control" id="dataTokenList" required=""  style="border:none;">
+                                  <option value="">Loading</option>
+                                </select>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="col text-muted text-center">
+                                    Data Token Amount
+                                    <br>
+                                    <label for="dt_amt" class="form-label"></label>
+                                    <input class="form-control" type="number" placeholder="0" required="" id="dt_amt" style='text-align:center;'/>
+                                  </div>
+                                  <div class="col text-muted text-center">
+                                    Data Token Weight
+                                    <br>
+                                    <label for="dt_wght" class="form-label"></label>
+                                    <input class="form-control" type="number" placeholder="0" required="" id="dt_wght"style='text-align:center;' />
+                                  </div>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="text-muted text-left">
+                                    Choose a Base Token
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <label for="baseTokenList"></label>
+                                <select class="form-control" id="baseTokenList" required=""  style="border:none;">
+                                  <option value="">Choose a Base Token</option>
+                                </select>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="col text-muted text-center">
+                                    Base Token Amount
+                                    <br>
+                                    <label for="bt_amt" class="form-label"></label>
+                                    <input class="form-control" type="number" placeholder="0" required="" id="bt_amt" style='text-align:center;'/>
+                                  </div>
+                                  <div class="col text-muted text-center">
+                                    Base Token Weight
+                                    <br>
+                                    <label for="bt_wght" class="form-label"></label>
+                                    <input class="form-control" type="number" placeholder="0" required="" id="bt_wght"style='text-align:center;' />
+                                  </div>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                  <div class="text-muted text-left">
+                                    Swap Fee
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <label for="inp_name" class="form-label"></label>
+                                <input class="form-control" type="number" placeholder="0" required="" id="dt_amt" style='text-align:center;'/>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container">
+                              <div class="row">
+                                  <button type="button" class="btn btn-primary btn-lg btn-block" id="setupPoolBtn" onclick='setupPool()'>Setup</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="pills-manage" role="tabpanel" aria-labelledby="pills-manage-tab">
+                            <div class="container">
+                              <div class="alert alert-warning" role="alert">
+                                You'll need to send two transactions. First to <b>Approve</b> and the second to <b>Swap</b>.
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="container container-border">
+                              <div class="row">
+                                <div class="text-muted text-left">
+                                  Choose a Pool
+                                </div>
                               </div>
                               <div class="row">
                                 <label for="managePoolsList"></label>
