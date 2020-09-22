@@ -54,11 +54,11 @@ async function setupApp(provider, accounts = []){
 
     let netId = await web3.eth.net.getId();
     window.netId = netId;
-    if(netId !== 4){
+    if(Object.keys(supportedChains).includes(netId.toString()) === false){
         Swal.fire({
             icon: 'error',
             title: "Incorrect Network",
-            text: "Please switch to Rinkeby"
+            text: `Please switch to ${Object.values(supportedChains).join(' or ')}`
         });
     }
     else{
@@ -203,4 +203,11 @@ function alertInfo(title="", text="", type=""){
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function openTokenEtherscan(id=''){
+    let add = document.querySelector(id).value;
+    if (add != ''){
+        window.open(`${chainExplorers[netId]}/address/${add}`, '_blank');
+    }
 }

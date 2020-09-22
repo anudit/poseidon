@@ -796,3 +796,41 @@ async function setupPool(_poolAddress,
     let result = await promise;
     return result;
 }
+
+
+async function getPoolTokenAddresses(_poolAddress){
+
+    let promise = new Promise((res, rej) => {
+
+        poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
+
+        poolContract.methods.getFinalTokens().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+            if (!error)
+                res(result);
+            else{
+                rej(error);
+            }
+        });
+
+    });
+    let result = await promise;
+    return result;
+}
+
+async function getPoolTokens(_poolAddress){
+
+    let promise = new Promise(async (res, rej) => {
+
+        let tokenAddresses = await getPoolTokenAddresses(_poolAddress);
+        let tokenData = []
+        for (var i =0 ; i<tokenAddresses.length; i+=1){
+            tokenData.push({
+                'adddress':tokenAddresses[i],
+                'symbol':await erc20Name(tokenAddresses[i]),
+            })
+        }
+        res(tokenData);
+    });
+    let result = await promise;
+    return result;
+}

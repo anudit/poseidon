@@ -128,7 +128,12 @@ async function swapPoolLists(){
         let isFinal = await isPoolFinalized(pools[poolInd]);
         if(isFinal === true){
             console.log('isFinal', isFinal, pools[poolInd])
-            poolList.innerHTML += `<option value="${pools[poolInd]}">${trimAddress(pools[poolInd])}</option>`;
+            let poolData = await getPoolTokens(pools[poolInd]);
+            let poolString = '';
+            poolData.forEach((poolToken)=>{
+                poolString+=`${poolToken.symbol} `;
+            })
+            poolList.innerHTML += `<option value="${pools[poolInd]}">${trimAddress(pools[poolInd])} [${poolString}]</option>`;
         }
     }
     managePoolsList_choiceElement = new Choices(poolList);

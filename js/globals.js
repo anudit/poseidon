@@ -1,3 +1,11 @@
+const supportedChains = {
+  '4':'Rinkeby'
+}
+
+const chainExplorers = {
+  '4':'https://rinkeby.etherscan.io'
+}
+
 const DTFactory_ABI = [
   {
     "inputs": [
