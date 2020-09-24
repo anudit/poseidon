@@ -6,165 +6,165 @@ const chainExplorers = {
   '4':'https://rinkeby.etherscan.io'
 }
 
-const DTFactory_ABI = [
-  {
-    "inputs": [
-      {
-        "name": "_template",
-        "type": "address"
-      },
-      {
-        "name": "_collector",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "newTokenAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "templateAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "tokenName",
-        "type": "string"
-      }
-    ],
-    "name": "TokenCreated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "name": "tokenAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "tokenName",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "name": "tokenSymbol",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "name": "tokenCap",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "registeredBy",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "registeredAt",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "blob",
-        "type": "string"
-      }
-    ],
-    "name": "TokenRegistered",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "instance",
-        "type": "address"
-      }
-    ],
-    "name": "InstanceDeployed",
-    "type": "event"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "blob",
-        "type": "string"
-      },
-      {
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "name": "symbol",
-        "type": "string"
-      },
-      {
-        "name": "cap",
-        "type": "uint256"
-      }
-    ],
-    "name": "createToken",
-    "outputs": [
-      {
-        "name": "token",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
+const DTFactory_ABI =[
+{
+  "inputs": [
+    {
+      "name": "_template",
+      "type": "address"
+    },
+    {
+      "name": "_collector",
+      "type": "address"
+    }
+  ],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+},
+{
+  "anonymous": false,
+  "inputs": [
+    {
+      "indexed": true,
+      "name": "newTokenAddress",
+      "type": "address"
+    },
+    {
+      "indexed": true,
+      "name": "templateAddress",
+      "type": "address"
+    },
+    {
+      "indexed": true,
+      "name": "tokenName",
+      "type": "string"
+    }
+  ],
+  "name": "TokenCreated",
+  "type": "event"
+},
+{
+  "anonymous": false,
+  "inputs": [
+    {
+      "indexed": true,
+      "name": "tokenAddress",
+      "type": "address"
+    },
+    {
+      "indexed": false,
+      "name": "tokenName",
+      "type": "string"
+    },
+    {
+      "indexed": false,
+      "name": "tokenSymbol",
+      "type": "string"
+    },
+    {
+      "indexed": false,
+      "name": "tokenCap",
+      "type": "uint256"
+    },
+    {
+      "indexed": true,
+      "name": "registeredBy",
+      "type": "address"
+    },
+    {
+      "indexed": false,
+      "name": "registeredAt",
+      "type": "uint256"
+    },
+    {
+      "indexed": true,
+      "name": "blob",
+      "type": "string"
+    }
+  ],
+  "name": "TokenRegistered",
+  "type": "event"
+},
+{
+  "anonymous": false,
+  "inputs": [
+    {
+      "indexed": false,
+      "name": "instance",
+      "type": "address"
+    }
+  ],
+  "name": "InstanceDeployed",
+  "type": "event"
+},
+{
+  "constant": false,
+  "inputs": [
+    {
+      "name": "blob",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "symbol",
+      "type": "string"
+    },
+    {
+      "name": "cap",
+      "type": "uint256"
+    }
+  ],
+  "name": "createToken",
+  "outputs": [
+    {
+      "name": "token",
+      "type": "address"
+    }
+  ],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+},
+{
+  "constant": true,
+  "inputs": [
 
-    ],
-    "name": "getCurrentTokenIndex",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
+  ],
+  "name": "getCurrentTokenIndex",
+  "outputs": [
+    {
+      "name": "",
+      "type": "uint256"
+    }
+  ],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+},
+{
+  "constant": true,
+  "inputs": [
 
-    ],
-    "name": "getTokenTemplate",
-    "outputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
-];
+  ],
+  "name": "getTokenTemplate",
+  "outputs": [
+    {
+      "name": "",
+      "type": "address"
+    }
+  ],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}
+]
 
 const DTFactory_Address = {
-  '4':'0x3ECd1429101f93149D799Ef257C07a2B1Dc30897'
+  '4':'0x91b5e13cA3ea2A78Ba9b33777f92af15E8177c79'
 };
 
 const DataTokenTemplate_ABI = [
@@ -884,7 +884,9 @@ const ERC20Token_ABI = [{"inputs":[{"internalType":"string","name":"name","type"
 
 const FixedRateExchange_ABI =  [
   {
-    "inputs": [],
+    "inputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -1031,7 +1033,9 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "create",
-    "outputs": [],
+    "outputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1099,14 +1103,18 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "swap",
-    "outputs": [],
+    "outputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [],
+    "inputs": [
+
+    ],
     "name": "getNumberOfExchanges",
     "outputs": [
       {
@@ -1131,7 +1139,9 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "setRate",
-    "outputs": [],
+    "outputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1145,7 +1155,9 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "activate",
-    "outputs": [],
+    "outputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1159,7 +1171,9 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "deactivate",
-    "outputs": [],
+    "outputs": [
+
+    ],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1243,7 +1257,9 @@ const FixedRateExchange_ABI =  [
   },
   {
     "constant": true,
-    "inputs": [],
+    "inputs": [
+
+    ],
     "name": "getExchanges",
     "outputs": [
       {
@@ -1274,18 +1290,18 @@ const FixedRateExchange_ABI =  [
     "stateMutability": "view",
     "type": "function"
   }
-];
+]
 
 const FixedRateExchange_Address = {
-  '4':'0x991c08bD00761A299d3126a81a985329096896D4'
+  '4':'0xc8315a112f27aE905986c3a46B7c1b5257F07C6C'
 };
 
 const BPool_Address = {
-  '4':'0xfF5Ec3cEB493d0Ed6ca2EA76Fb0DDF5C2b537e49'
+  '4':'0x79012698b997865c2437F5920A371F819F454d8f'
 };
 
 const BPoolFactory_Address = {
-  '4':'0x9B90A1358fbeEC1C4bB1DA7D4E85C708f87556Ec'
+  '4':'0xc239e88F8921EE1Cb58E93945eAd95206A989142'
 };
 
 const BPool_ABI = [
