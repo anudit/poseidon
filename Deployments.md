@@ -234,3 +234,122 @@ Summary
 =======
 - Total deployments:   8
 - Final cost:          0.10400656 ETH
+
+
+# POA SOKOL xDAI Testnet
+
+   Deploying 'OPFCommunityFeeCollector'
+   ------------------------------------
+   - transaction hash:    0xae9cf8422171feb0e5773fffde1a7d14cc3ebf2514698287d405be5451a76ddd
+   - Blocks: 1            Seconds: 4
+   - contract address:    0xeb7DbFfE1E2ef48b53711D87D9F2f3712CbfE959
+   - block number:        16971679
+   - block timestamp:     1601048985
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.999295898
+   - gas used:            517917 (0x7e71d)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.000517917 ETH
+
+
+   Deploying 'DataTokenTemplate'
+   -----------------------------
+   - transaction hash:    0xefcffc51e813ebd1fedc644066807b405d64647ef5407cb2e935906b2cd58601
+   - Blocks: 1            Seconds: 4
+   - contract address:    0x51b9E97ae9758a45B08c51C1bd4EEEcE3A64489a
+   - block number:        16971681
+   - block timestamp:     1601048995
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.997480339
+   - gas used:            1815559 (0x1bb407)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.001815559 ETH
+
+
+   Deploying 'DTFactory'
+   ---------------------
+   - transaction hash:    0xb00361b5759918b0b0d0e61ddec1f0764560caf06e7d504797d4a19c9454cd57
+   - Blocks: 1            Seconds: 4
+   - contract address:    0x859c5Fd8be133510Fc5c7c15563Fb0a3ccDBb821
+   - block number:        16971683
+   - block timestamp:     1601049005
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.996864589
+   - gas used:            615750 (0x96546)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.00061575 ETH
+
+
+   Deploying 'BPool'
+   -----------------
+   - transaction hash:    0xa5260cd53142ad63880c233270864fa5e192420ba821c50b0f31be9157522b7e
+   - Blocks: 1            Seconds: 8
+   - contract address:    0xa1f98C3dC4350AA3280c38Cb21B286A53b0b6B16
+   - block number:        16971686
+   - block timestamp:     1601049020
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.991477481
+   - gas used:            5387108 (0x523364)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.005387108 ETH
+
+
+   Deploying 'BFactory'
+   --------------------
+   - transaction hash:    0xe3cf8d47831f2116029a399a38d1c6631b86c229447d3f72d587d86d52767b78
+   - Blocks: 1            Seconds: 4
+   - contract address:    0xc65889D17aa15F57D324Ce16B9296243Cc04824b
+   - block number:        16971688
+   - block timestamp:     1601049030
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.991090638
+   - gas used:            386843 (0x5e71b)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.000386843 ETH
+
+
+   Deploying 'FixedRateExchange'
+   -----------------------------
+   - transaction hash:    0x7087442551a64e2c37cb13c5ae3a2627b09e35e31002079d9becc4e091f1ae57
+   - Blocks: 1            Seconds: 4
+   - contract address:    0xE1D1D66A37C22cCCfbbbbD15Dc77B41c44BF681f
+   - block number:        16971690
+   - block timestamp:     1601049040
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.989896326
+   - gas used:            1194312 (0x123948)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.001194312 ETH
+
+
+   Deploying 'Metadata'
+   --------------------
+   - transaction hash:    0x3b4d35afe42a993f1e55f89b10f40280334f3d67f29e1e06bf6223dfce20bc63
+   - Blocks: 0            Seconds: 0
+   - contract address:    0xade9F9A7d2cae453312f15134E4C05b39EBe3Bd7
+   - block number:        16971692
+   - block timestamp:     1601049050
+   - account:             0x707aC3937A9B31C225D8C240F5917Be97cab9F20
+   - balance:             99.989557064
+   - gas used:            339262 (0x52d3e)
+   - gas price:           1 gwei
+   - value sent:          0 ETH
+   - total cost:          0.000339262 ETH
+
+
+   - Saving migration to chain.
+   - Saving artifacts
+   -------------------------------------
+   - Total cost:         0.010256751 ETH
+
+
+Summary
+=======
+- Total deployments:   8
+- Final cost:          0.01040068 ETH
