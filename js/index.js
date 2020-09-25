@@ -55,10 +55,15 @@ async function setupApp(provider, accounts = []){
     let netId = await web3.eth.net.getId();
     window.netId = netId;
     if(Object.keys(supportedChains).includes(netId.toString()) === false){
+        let alHtml = '<ul class="list-group list-group">';
+        Object.keys(supportedChains).forEach((chainID)=>{
+            alHtml+=`<li class="list-group-item">${supportedChains[chainID]}</li>`
+        })
+        alHtml += '</ul>';
         Swal.fire({
             icon: 'error',
             title: "Incorrect Network",
-            text: `Please switch to ${Object.values(supportedChains).join(' or ')}`
+            html: `Please switch to a supported chain. <br/><br/>` + alHtml
         });
     }
     else{

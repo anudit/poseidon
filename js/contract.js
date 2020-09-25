@@ -29,7 +29,7 @@ async function getUserDataTokens(_address = web3.currentProvider.selectedAddress
 
         DTFactory.getPastEvents('TokenRegistered', {
             filter: {registeredBy: _address},
-            fromBlock: 7039273,
+            fromBlock: DTFactory_BlkNumber[netId],
             toBlock: 'latest'
         })
         .then((events) => {
@@ -62,7 +62,7 @@ async function isUserDataToken(_tokenAddress, _address = web3.currentProvider.se
 
         DTFactory.getPastEvents('TokenRegistered', {
             filter: {registeredBy: _address},
-            fromBlock: 7039273,
+            fromBlock: DTFactory_BlkNumber[netId],
             toBlock: 'latest'
         })
         .then((events) => {
@@ -372,7 +372,7 @@ async function getExchangesCreated(_userAddress = null){
     let promise = new Promise((res, rej) => {
 
         FixedRateExchange.getPastEvents('ExchangeCreated', {
-            fromBlock: 7114953,
+            fromBlock: FixedRateExchange_BlkNumber[netId],
             toBlock: 'latest'
         })
         .then(async (events) => {
@@ -725,7 +725,7 @@ async function getUserPools(_address = web3.currentProvider.selectedAddress){
 
         BPoolFactory.getPastEvents('BPoolRegistered', {
             filter: {registeredBy: _address},
-            fromBlock: 7039273,
+            fromBlock: BPoolFactory_BlkNumber[netId],
             toBlock: 'latest'
         })
         .then((events) => {

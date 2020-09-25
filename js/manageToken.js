@@ -72,7 +72,7 @@ async function addToMetamask(){
     const tokenAddress = pageTokenData.tokenAddress;
     const tokenSymbol = pageTokenData.tokenSymbol;
     const tokenDecimals = 18;
-    const tokenImage = `https://api.kwelo.com/v1/media/identicon/${pageTokenData.tokenAddress}`;
+    const tokenImage = `https://oceanv3.anudit.dev/images/favicon-white.png`;
 
     try {
     const wasAdded = await ethereum.request({
