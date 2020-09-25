@@ -1,9 +1,11 @@
 const supportedChains = {
-  '4':'Rinkeby'
+  '4':'Rinkeby Testnet',
+  '80001':'Matic Mumbai Testnet'
 }
 
 const chainExplorers = {
-  '4':'https://rinkeby.etherscan.io'
+  '4':'https://rinkeby.etherscan.io',
+  '80001':'https://mumbai-explorer.matic.today'
 }
 
 const DTFactory_ABI =[
@@ -164,7 +166,8 @@ const DTFactory_ABI =[
 ]
 
 const DTFactory_Address = {
-  '4':'0x91b5e13cA3ea2A78Ba9b33777f92af15E8177c79'
+  '4':'0x91b5e13cA3ea2A78Ba9b33777f92af15E8177c79',
+  '80001':'0xCa68cb2CD799Eeb92D142Aa25E0E1f99f3eF2b2a'
 };
 
 const DataTokenTemplate_ABI = [
@@ -1293,15 +1296,18 @@ const FixedRateExchange_ABI =  [
 ]
 
 const FixedRateExchange_Address = {
-  '4':'0xc8315a112f27aE905986c3a46B7c1b5257F07C6C'
+  '4':'0xc8315a112f27aE905986c3a46B7c1b5257F07C6C',
+  '80001':'0xFf0218B7E6F7fdFf4e1EAbCDCB5EEc018439bF02'
 };
 
 const BPool_Address = {
-  '4':'0x79012698b997865c2437F5920A371F819F454d8f'
+  '4':'0x79012698b997865c2437F5920A371F819F454d8f',
+  '80001':'0x855069310D7875a76a3c2fd91808831Ca907D1A5'
 };
 
 const BPoolFactory_Address = {
-  '4':'0xc239e88F8921EE1Cb58E93945eAd95206A989142'
+  '4':'0xc239e88F8921EE1Cb58E93945eAd95206A989142',
+  '80001':'0x4fAF73709bDBab1e60b2a69822ea717C680FF842'
 };
 
 const BPool_ABI = [
