@@ -83,11 +83,11 @@ textarea.form-control {
 }
 
 .btn-primary,.carousel-indicators li.active:before {
-    background: linear-gradient(to right bottom,#7b1173,#ff4092)
+    background: #1965bf
 }
 
 .btn-primary:hover {
-    background: linear-gradient(to right bottom,#7b1173,#ff4092)
+    background: #0e89d1
 }
 
 .btn-secondary {
@@ -122,7 +122,7 @@ textarea.form-control {
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle,.show>.btn-primary.dropdown-toggle {
-    background: #7b1173
+    background: #1965bf
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle {
@@ -1471,7 +1471,7 @@ textarea.form-control {
     }
 
     .vacancy-item:hover {
-        background: #7b1173;
+        background: #112d7b;
         color: #fff
     }
 

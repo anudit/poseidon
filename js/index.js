@@ -9,7 +9,6 @@ if (typeof window.ethereum !== 'undefined') {
 
 window.addEventListener('load', async () => {
     setupWaves();
-
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -90,7 +89,7 @@ function setupWaves(){
     .attr('fill', 'none')
     .attr('stroke-width', 2)
     .selectAll('path')
-    .data(['#FF4092','#E000CF','#8B98A9', '#E2E2E2'])
+    .data(['#5E60CE','#48BFE3','#56CFE1', '#72EFDD'])
     .enter()
     .append('path')
     .attr('stroke', d => { return d })

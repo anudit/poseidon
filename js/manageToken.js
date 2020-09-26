@@ -98,6 +98,6 @@ async function addToMetamask(){
     }
 }
 
-function etherscan(){
-    window.open(`https://rinkeby.etherscan.io/address/${pageTokenData.tokenAddress}`, '_blank');
+function explorer(){
+    window.open(`${chainExplorers[netId]}/address/${pageTokenData.tokenAddress}`, '_blank');
 }
