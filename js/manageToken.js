@@ -1,6 +1,11 @@
 
 async function init(accounts = []){
 
+    Ipfs.create({ repo: 'ipfs-' + Math.random() }).then(node=>{
+        window.node = node;
+        const status = node.isOnline() ? 'online' : 'offline';
+        console.log(`Node status: ${status}`);
+    });
 
     let tokenData = await isUserDataToken(getParameterByName('add'));
     if(tokenData  === false){
@@ -58,11 +63,13 @@ async function transfer(){
 
 async function explore(){
     let blobData = await dataTokenBlob(pageTokenData.tokenAddress);
+    console.log(blobData);
+    let jsonData = await getIPFS(blobData);
     Swal.fire({
         icon: 'info',
-        title: 'DataToken Blob Storage',
+        title: 'DataToken Details',
         html: `
-            <code>${blobData}</code>
+            <pre style="text-align:left;">${JSON.stringify(JSON.parse(jsonData), undefined, 4)}</pre>
         `,
     });
 }
@@ -101,3 +108,18 @@ async function addToMetamask(){
 function explorer(){
     window.open(`${chainExplorers[netId]}/address/${pageTokenData.tokenAddress}`, '_blank');
 }
+
+
+async function getIPFS(_hash = ''){
+    let promise = new Promise(async (res, rej) => {
+
+        for await (const data of node.cat(_hash)) {
+            res(data.toString())
+        }
+
+    });
+    let result = await promise;
+    return result;
+
+}
+

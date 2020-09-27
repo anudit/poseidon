@@ -1,6 +1,7 @@
 
-async function createDataToken(_name ='', _symbol ='', _cap ='', _blob = ''){
+async function createDataToken(_name, _symbol, _cap, _blob){
     let promise = new Promise((res, rej) => {
+        console.info('Using Data', _blob, _name, _symbol, web3.utils.toWei(_cap));
 
         DTFactory.methods.createToken(_blob, _name, _symbol, web3.utils.toWei(_cap)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
             if (!error)
