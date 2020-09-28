@@ -3,7 +3,7 @@ async function createDataToken(_name, _symbol, _cap, _blob){
     let promise = new Promise((res, rej) => {
         console.info('Using Data', _blob, _name, _symbol, web3.utils.toWei(_cap));
 
-        DTFactory.methods.createToken(_blob, _name, _symbol, web3.utils.toWei(_cap)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        DTFactory.methods.createToken(_blob, _name, _symbol, web3.utils.toWei(_cap)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -25,7 +25,7 @@ async function createDataToken(_name, _symbol, _cap, _blob){
     return result;
 }
 
-async function getUserDataTokens(_address = web3.currentProvider.selectedAddress){
+async function getUserDataTokens(_address = getAddress()){
     let promise = new Promise((res, rej) => {
 
         DTFactory.getPastEvents('TokenRegistered', {
@@ -58,7 +58,7 @@ async function getUserDataTokens(_address = web3.currentProvider.selectedAddress
     return result;
 }
 
-async function isUserDataToken(_tokenAddress, _address = web3.currentProvider.selectedAddress){
+async function isUserDataToken(_tokenAddress, _address = getAddress()){
     let promise = new Promise((res, rej) => {
 
         DTFactory.getPastEvents('TokenRegistered', {
@@ -96,7 +96,7 @@ async function dataTokenMint(_tokenAddress, _account , _amt){
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.mint(_account, web3.utils.toWei(_amt)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.mint(_account, web3.utils.toWei(_amt)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -114,7 +114,7 @@ async function dataTokenApprove(_tokenAddress, _spender , _amt){
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.approve(_spender, web3.utils.toWei(_amt)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.approve(_spender, web3.utils.toWei(_amt)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -133,7 +133,7 @@ async function baseTokenApproveAndSwap(_exchangeId, _basetokenAddress, _spender 
 
         baseTokenContract = new web3.eth.Contract(ERC20Token_ABI, _basetokenAddress);
         console.log(`Approving ${_allowanceAmt}`);
-        baseTokenContract.methods.approve(_spender, web3.utils.toWei((_allowanceAmt).toString())).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        baseTokenContract.methods.approve(_spender, web3.utils.toWei((_allowanceAmt).toString())).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -167,12 +167,12 @@ async function baseTokenApproveAndSwap(_exchangeId, _basetokenAddress, _spender 
 }
 
 
-async function dataTokenBalanceOf(_tokenAddress, _account = web3.currentProvider.selectedAddress){
+async function dataTokenBalanceOf(_tokenAddress, _account = getAddress()){
     let promise = new Promise((res, rej) => {
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.balanceOf(_account).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.balanceOf(_account).call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -190,7 +190,7 @@ async function dataTokenTransfer(_tokenAddress, _to, _amt){
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.balanceOf(_to, web3.utils.toWei(_amt)).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.balanceOf(_to, web3.utils.toWei(_amt)).call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -208,7 +208,7 @@ async function dataTokenCap(_tokenAddress){
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.cap().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.cap().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -226,7 +226,7 @@ async function dataTokenBlob(_tokenAddress){
 
         dataTokenContract = new web3.eth.Contract(DataTokenTemplate_ABI, _tokenAddress);
 
-        dataTokenContract.methods.blob().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        dataTokenContract.methods.blob().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -239,12 +239,12 @@ async function dataTokenBlob(_tokenAddress){
     return result;
 }
 
-async function erc20Name(_tokenAddress, _account = web3.currentProvider.selectedAddress){
+async function erc20Name(_tokenAddress, _account = getAddress()){
     let promise = new Promise((res, rej) => {
 
         tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
 
-        tokenContract.methods.name().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        tokenContract.methods.name().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -257,12 +257,12 @@ async function erc20Name(_tokenAddress, _account = web3.currentProvider.selected
     return result;
 }
 
-async function erc20Symbol(_tokenAddress, _account = web3.currentProvider.selectedAddress){
+async function erc20Symbol(_tokenAddress, _account = getAddress()){
     let promise = new Promise((res, rej) => {
 
         tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
 
-        tokenContract.methods.symbol().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        tokenContract.methods.symbol().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -281,7 +281,7 @@ async function erc20Allowance(_tokenAddress, _owner, _spender){
 
         tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
 
-        tokenContract.methods.allowance(_owner, _spender).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        tokenContract.methods.allowance(_owner, _spender).call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -299,7 +299,7 @@ async function erc20Approve(_tokenAddress, _spender, _amount, control = null){
 
         tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
 
-        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -343,7 +343,7 @@ async function erc20ApproveP(_tokenAddress, _spender, _amount){
 
         tokenContract = new web3.eth.Contract(ERC20Token_ABI, _tokenAddress);
 
-        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        tokenContract.methods.approve(_spender, web3.utils.toWei(_amount)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -404,7 +404,7 @@ async function getExchangesCreated(_userAddress = null){
 async function getExchangeData(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.getExchange(_exchangeId).call({from:web3.currentProvider.selectedAddress}, async function(error, result) {
+        FixedRateExchange.methods.getExchange(_exchangeId).call({from:getAddress()}, async function(error, result) {
             if (!error){
                 let data = {
                     exchangeOwner: result.exchangeOwner,
@@ -429,7 +429,7 @@ async function getExchangeData(_exchangeId){
 async function createExchange(_baseToken, _dataToken, _fixedRate){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.create(_baseToken, _dataToken, web3.utils.toWei(_fixedRate)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.create(_baseToken, _dataToken, web3.utils.toWei(_fixedRate)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -467,7 +467,7 @@ async function createExchange(_baseToken, _dataToken, _fixedRate){
 async function setExchangeRate(_exchangeId, _newRate){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.setRate(_exchangeId, web3.utils.toWei(_newRate)).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.setRate(_exchangeId, web3.utils.toWei(_newRate)).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -500,7 +500,7 @@ async function setExchangeRate(_exchangeId, _newRate){
 async function getExchangeRate(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.getRate(_exchangeId).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.getRate(_exchangeId).call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else {
@@ -516,7 +516,7 @@ async function getExchangeRate(_exchangeId){
 async function enableExchange(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.activate(_exchangeId).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.activate(_exchangeId).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -549,7 +549,7 @@ async function enableExchange(_exchangeId){
 async function disableExchange(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.deactivate(_exchangeId).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.deactivate(_exchangeId).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -584,7 +584,7 @@ async function exchangeSwap(_exchangeId, _dataTokenAmount){
         let ctrlBtn = document.querySelector('#swapBtn');
         console.log(`To swap from ${_exchangeId} ${web3.utils.toWei((_dataTokenAmount).toString())}`);
 
-        FixedRateExchange.methods.swap(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.swap(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -626,7 +626,7 @@ async function swapCalcInGivenOut(_exchangeId, _dataTokenAmount){
         if(_dataTokenAmount === ''){
             _dataTokenAmount = '0';
         }
-        FixedRateExchange.methods.CalcInGivenOut(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        FixedRateExchange.methods.CalcInGivenOut(_exchangeId, web3.utils.toWei((_dataTokenAmount).toString())).call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else {
@@ -643,7 +643,7 @@ async function swapCalcInGivenOut(_exchangeId, _dataTokenAmount){
 async function createBPool(ctrlBtn = null){
     let promise = new Promise((res, rej) => {
 
-        BPoolFactory.methods.newBPool().send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        BPoolFactory.methods.newBPool().send({from:getAddress()}, function(error, result) {
             if (!error){
                 ctrlBtn.innerText  = 'Creating Pool...';
                 ctrlBtn.classList.add('disabled');
@@ -680,10 +680,10 @@ async function createBPool(ctrlBtn = null){
     return result;
 }
 
-async function getPools(_userAddress = web3.currentProvider.selectedAddress){
+async function getPools(_userAddress = getAddress()){
     let promise = new Promise((res, rej) => {
 
-        BPoolFactory.methods.newBPool().send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        BPoolFactory.methods.newBPool().send({from:getAddress()}, function(error, result) {
             if (!error){
                 ctrlBtn.innerText  = 'Creating Pool...';
                 ctrlBtn.classList.add('disabled');
@@ -721,7 +721,7 @@ async function getPools(_userAddress = web3.currentProvider.selectedAddress){
 }
 
 
-async function getUserPools(_address = web3.currentProvider.selectedAddress){
+async function getUserPools(_address = getAddress()){
     let promise = new Promise((res, rej) => {
 
         BPoolFactory.getPastEvents('BPoolRegistered', {
@@ -752,7 +752,7 @@ async function isPoolFinalized(_poolAddress){
 
         poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
 
-        poolContract.methods.isFinalized().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        poolContract.methods.isFinalized().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -785,7 +785,7 @@ async function setupPool(_poolAddress,
             _dataTokenAddress, web3.utils.toWei(_dataTokenAmount), web3.utils.toWei(_dataTokenWeight),
             _baseTokenAddress, web3.utils.toWei(_baseTokenAmount), web3.utils.toWei(_baseTokenWeight),
             web3.utils.toWei(_swapFee)
-        ).send({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        ).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
@@ -805,7 +805,7 @@ async function getPoolTokenAddresses(_poolAddress){
 
         poolContract = new web3.eth.Contract(BPool_ABI, _poolAddress);
 
-        poolContract.methods.getFinalTokens().call({from:web3.currentProvider.selectedAddress}, function(error, result) {
+        poolContract.methods.getFinalTokens().call({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{

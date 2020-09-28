@@ -159,7 +159,7 @@ async function setupCreateExchangeUI(){
 async function setupManageExchangeUI(){
     let me = document.querySelector('#manageExchangeList');
 
-    getExchangesCreated(web3.currentProvider.selectedAddress).then(async (exchanges)=>{
+    getExchangesCreated(getAddress()).then(async (exchanges)=>{
         // console.log(exchanges);
         await sleep(2000);
         me.innerHTML = `<option value="">Choose an Exchange</option>`;
@@ -243,7 +243,7 @@ async function exchangeTokensUI(){
             ctrlBtn.classList.remove('disabled');
         }
         else {
-            let userAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.baseToken.tokenAddress, web3.currentProvider.selectedAddress, FixedRateExchange_Address[netId]));
+            let userAllowanceAmt = parseFloat(await erc20Allowance(exchangeData.baseToken.tokenAddress, getAddress(), FixedRateExchange_Address[netId]));
             if(userAllowanceAmt >= baseTokenAmt ){
                 ctrlBtn.innerText  = 'Swapping Tokens';
                 ctrlBtn.classList.add('disabled');

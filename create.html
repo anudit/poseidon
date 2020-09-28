@@ -84,7 +84,7 @@
 
                       <label for="inp_dataType" class="form-label">
                         Data Type&nbsp;
-                        <svg onclick="Swal.fire({icon: 'info',title: 'Link to your Data Token file',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Data Type',text: 'What kind of Data is accesible after owning the Data Token'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
                       </label>
                       <select id="inp_dataType" class="form-select form-select-sm" aria-label=".form-select-sm example" required="">
                         <option selected value="download">Download</option>
@@ -104,41 +104,54 @@
 
                       <label for="inp_source" class="form-label">
                         Link to your Data Source&nbsp;
-                        <svg onclick="Swal.fire({icon: 'info',title: 'Link to your Data Token file',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Data Source',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
                       </label>
                       <input class="form-control" type="text" placeholder="Enter your link" required="" id="inp_source" />
                       <br/>
 
                       <label for="inp_dataDesc" class="form-label">
                         Data Description &nbsp;
-                        <svg onclick="Swal.fire({icon: 'info',title: 'Link to your Data Token file',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                        <svg onclick="Swal.fire({icon: 'info',title: 'Data Description', text: 'A description about your Data to allow buyers gain insights about the different aspects of the data owning this Data Token unlocks.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
                       </label>
                       <input class="form-control" type="text" placeholder="Enter Data Description" required="" id="inp_dataDesc" />
                       <br/>
 
                       <label for="inp_dataLicense" class="form-label">
                         Data License&nbsp;
-                        <svg onclick="Swal.fire({icon: 'info',title: 'Link to your Data Token file',text: 'This is the place where people can go ahead and consume the data linked to your data token. Try making the content at this page as informative as possible.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+                        <svg onclick="Swal.fire({icon: 'info',title: 'License',text: 'Add a license to your Data Token.'})" style="cursor:pointer;" height="12pt" viewBox="0 0 512 512" width="12pt" xmlns="http://www.w3.org/2000/svg"><path d="m277.332031 128c0 11.78125-9.550781 21.332031-21.332031 21.332031s-21.332031-9.550781-21.332031-21.332031 9.550781-21.332031 21.332031-21.332031 21.332031 9.550781 21.332031 21.332031zm0 0"/><path d="m256 405.332031c-8.832031 0-16-7.167969-16-16v-165.332031h-21.332031c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h37.332031c8.832031 0 16 7.167969 16 16v181.332031c0 8.832031-7.167969 16-16 16zm0 0"/><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m304 405.332031h-96c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h96c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
                       </label>
                       <select id="inp_dataLicense" class="form-select form-select-sm" aria-label=".form-select-sm example" required="">
                         <option selected value="No License">No License</option>
+                        <option value="Apache License 2.0">Apache License 2.0</option>
+                        <option value="GNU General Public License v3.0">GNU General Public License v3.0</option>
                         <option value="MIT License">MIT License</option>
+                        <option value="BSD 2-Clause Simplified License">BSD 2-Clause "Simplified" License</option>
+                        <option value="BSD 3-Clause New or Revised License">BSD 3-Clause "New" or "Revised" License</option>
+                        <option value="Boost Software License 1.0">Boost Software License 1.0</option>
+                        <option value="Creative Commons Zero v1.0 Universal">Creative Commons Zero v1.0 Universal</option>
+                        <option value="Eclipse Public License 2.0">Eclipse Public License 2.0</option>
+                        <option value="GNU Affero General Public License v3.0">GNU Affero General Public License v3.0</option>
+                        <option value="GNU General Public License v2.0">GNU General Public License v2.0</option>
+                        <option value="GNU Lesser General Public License v2.1">GNU Lesser General Public License v2.1</option>
+                        <option value="Mozilla Public License 2.0">Mozilla Public License 2.0</option>
+                        <option value="The Unlicense">The Unlicense</option>
                       </select>
                       <br/>
-
-
-                      <button class="btn btn-primary" onclick="create()" id="createBtn">Create</button>
-                      <button class="btn btn-outline-secondary" onclick="clearInput()" id="clearBtn">Clear</button>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-md-12 col-xl-12 text-center">
+                <button class="btn btn-primary" onclick="create()" id="createBtn">Create</button>
+                <button class="btn btn-outline-secondary" onclick="clearInput()" id="clearBtn">Clear</button>
+              </div>
             </div>
+            <br/><br/><br/>
           </div>
         </div>
       </div>
 
-      <footer class="footer" style="position: fixed;bottom: 0;width: 100%;line-height: 40px;background-color: #fff;">
+      <footer class="footer">
         <div class="footer-down">
           <div class="container">
             <div class="row align-items-center">

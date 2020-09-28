@@ -851,6 +851,7 @@ textarea.form-control {
     opacity: .5
 }
 
+
 .footer-section {
     padding: 40px 0 15px
 }
@@ -911,6 +912,15 @@ textarea.form-control {
     color: #0247e2
 }
 
+.footer {
+   position: relative;
+   bottom: 0;
+   width: 100%;
+   line-height: 40px;
+   background-color: #fff;
+   z-index:2;
+}
+
 .footer .navbar-brand {
     display: block;
     text-align: center
@@ -936,8 +946,8 @@ textarea.form-control {
     min-height: 100%;
     padding: 30px 15px;
     /* border: 0; */
-    border-width:2px;
-    border-radius: 8px;
+    border-width: 1px;
+    border-radius: 5px;
     text-align: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1161,6 +1171,15 @@ textarea.form-control {
 
 
 @media (min-width: 768px) {
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        line-height: 40px;
+        background-color: #fff;
+        z-index:2;
+     }
 
     .nav-item {
         width: 120px;

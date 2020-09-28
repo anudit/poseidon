@@ -14,7 +14,7 @@ window.addEventListener('load', async () => {
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
-    if (window.ethereum) {
+    if (window.ethereum && window.ethereum.request) {
 
         let accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         await setupApp(ethereum, accounts)
@@ -73,6 +73,18 @@ async function setupApp(provider, accounts = []){
         init(accounts);
     }
 
+}
+
+function getAddress(){
+    if (web3.currentProvider.isMetaMask){
+        return web3.currentProvider.selectedAddress;
+    }
+    else if(web3.currentProvider.isTrust){
+        return web3.currentProvider.address;
+    }
+    else {
+        return web3.currentProvider.selectedAddress;
+    }
 }
 
 function setupWaves(){
@@ -215,3 +227,4 @@ function openTokenEtherscan(id=''){
         window.open(`${chainExplorers[netId]}/address/${add}`, '_blank');
     }
 }
+
