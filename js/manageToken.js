@@ -66,12 +66,21 @@ async function explore(){
     console.log(blobData);
     let jsonData = await getIPFS(blobData);
     Swal.fire({
-        icon: 'info',
+        icon: undefined,
         title: 'DataToken Details',
         html: `
-            <pre style="text-align:left;">${JSON.stringify(JSON.parse(jsonData), undefined, 4)}</pre>
+        <pre style="text-align:left;">${JSON.stringify(JSON.parse(jsonData), undefined, 4)}</pre>
         `,
-    });
+        showCancelButton: false,
+        showCloseButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Copy Details',
+        footer: `<a href="https://ipfs.io/ipfs/${blobData}" target='_blank'>View on IPFS</a>`
+      }).then((result) => {
+        if (result.isConfirmed) {
+            copyToClipboard(JSON.stringify(JSON.parse(jsonData)));
+        }
+      })
 }
 
 
@@ -79,7 +88,7 @@ async function addToMetamask(){
     const tokenAddress = pageTokenData.tokenAddress;
     const tokenSymbol = pageTokenData.tokenSymbol;
     const tokenDecimals = 18;
-    const tokenImage = `https://oceanv3.anudit.dev/images/favicon-white.png`;
+    const tokenImage = `https://oceanv3.anudit.dev/images/favicon-black.png`;
 
     try {
     const wasAdded = await ethereum.request({
