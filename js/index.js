@@ -7,6 +7,10 @@ if (typeof window.ethereum !== 'undefined') {
     ethereum.autoRefreshOnNetworkChange = false;
 }
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    setupTheme();
+});
+
 window.addEventListener('load', async () => {
     setupWaves();
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
@@ -228,3 +232,36 @@ function openTokenEtherscan(id=''){
     }
 }
 
+function setupTheme(){
+    if (localStorage.getItem("isDark") == null){
+        console.log('Setting up default theme as light');
+        localStorage.setItem("isDark", false);
+    }
+    else if(localStorage.getItem("isDark") == 'true'){
+        makeDark();
+    }
+}
+
+function toggleTheme(){
+    console.log(localStorage.getItem("isDark"));
+    if (localStorage.getItem("isDark") == 'true'){
+        makeLight();
+    }
+    else if(localStorage.getItem("isDark") == 'false'){
+        makeDark();
+    }
+}
+
+function makeDark(){
+    localStorage.setItem("isDark", true);
+    document.body.style.filter = 'invert(1)';
+    document.body.style.backgroundColor = '#000';
+    document.querySelector('#toggleThemeBtn').innerText = '💡';
+}
+
+function makeLight(){
+    localStorage.setItem("isDark", false);
+    document.body.style.filter = 'invert(0)';
+    document.body.style.backgroundColor = '#f7f7f7';
+    document.querySelector('#toggleThemeBtn').innerText = '🌑';
+}
