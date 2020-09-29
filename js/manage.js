@@ -39,7 +39,7 @@ async function refreshUI(){
 
                 document.querySelector('#tokenList').innerHTML+=html;
             });
-            document.querySelector('#search').style.display ='block';
+            document.querySelector('#searchBox').style.display ='flex';
             document.querySelector('#search').addEventListener("input",function () {
                 filterTokens(document.querySelector('#search').value);
             })
