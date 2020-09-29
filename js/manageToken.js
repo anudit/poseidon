@@ -1,12 +1,6 @@
 
 async function init(accounts = []){
 
-    Ipfs.create({ repo: 'ipfs-' + Math.random() }).then(node=>{
-        window.node = node;
-        const status = node.isOnline() ? 'online' : 'offline';
-        console.log(`Node status: ${status}`);
-    });
-
     let tokenData = await isUserDataToken(getParameterByName('add'));
     if(tokenData  === false){
         window.location='./index.html';
@@ -69,16 +63,20 @@ async function explore(){
         icon: undefined,
         title: 'DataToken Details',
         html: `
-        <pre style="text-align:left;">${JSON.stringify(JSON.parse(jsonData), undefined, 4)}</pre>
+        <pre style="text-align:left;">${JSON.stringify(jsonData, undefined, 4)}</pre>
         `,
         showCancelButton: false,
         showCloseButton: true,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Copy Details',
-        footer: `<a href="https://ipfs.io/ipfs/${blobData}" target='_blank'>View on IPFS</a>`
+        footer: `
+            <a href="https://ipfs.io/ipfs/${blobData}" target='_blank'>
+                View on IPFS&nbsp;
+                <svg fill="#00f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="20px" height="20px" style=" margin-top: -3px; "><path d="M 25.980469 2.9902344 A 1.0001 1.0001 0 0 0 25.869141 3 L 20 3 A 1.0001 1.0001 0 1 0 20 5 L 23.585938 5 L 13.292969 15.292969 A 1.0001 1.0001 0 1 0 14.707031 16.707031 L 25 6.4140625 L 25 10 A 1.0001 1.0001 0 1 0 27 10 L 27 4.1269531 A 1.0001 1.0001 0 0 0 25.980469 2.9902344 z M 6 7 C 4.9069372 7 4 7.9069372 4 9 L 4 24 C 4 25.093063 4.9069372 26 6 26 L 21 26 C 22.093063 26 23 25.093063 23 24 L 23 14 L 23 11.421875 L 21 13.421875 L 21 16 L 21 24 L 6 24 L 6 9 L 14 9 L 16 9 L 16.578125 9 L 18.578125 7 L 16 7 L 14 7 L 6 7 z"/></svg>
+            </a>`
       }).then((result) => {
         if (result.isConfirmed) {
-            copyToClipboard(JSON.stringify(JSON.parse(jsonData)));
+            copyToClipboard(JSON.stringify(jsonData));
         }
       })
 }
@@ -120,12 +118,17 @@ function explorer(){
 
 
 async function getIPFS(_hash = ''){
+
     let promise = new Promise(async (res, rej) => {
 
-        for await (const data of node.cat(_hash)) {
-            res(data.toString())
-        }
-
+        fetch(`https://ipfs.io/ipfs/${_hash}`)
+        .then(response => response.json())
+        .then((data) => {
+            res(data);
+        })
+        .catch(e=>{
+            rej(e);
+        })
     });
     let result = await promise;
     return result;
