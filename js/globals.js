@@ -12,176 +12,203 @@ const chainExplorers = {
   '77': 'https://blockscout.com/poa/sokol'
 }
 
-const DTFactory_ABI =[
-{
-  "inputs": [
-    {
-      "name": "_template",
-      "type": "address"
-    },
-    {
-      "name": "_collector",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "constructor"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": true,
-      "name": "newTokenAddress",
-      "type": "address"
-    },
-    {
-      "indexed": true,
-      "name": "templateAddress",
-      "type": "address"
-    },
-    {
-      "indexed": true,
-      "name": "tokenName",
-      "type": "string"
-    }
-  ],
-  "name": "TokenCreated",
-  "type": "event"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": true,
-      "name": "tokenAddress",
-      "type": "address"
-    },
-    {
-      "indexed": false,
-      "name": "tokenName",
-      "type": "string"
-    },
-    {
-      "indexed": false,
-      "name": "tokenSymbol",
-      "type": "string"
-    },
-    {
-      "indexed": false,
-      "name": "tokenCap",
-      "type": "uint256"
-    },
-    {
-      "indexed": true,
-      "name": "registeredBy",
-      "type": "address"
-    },
-    {
-      "indexed": false,
-      "name": "registeredAt",
-      "type": "uint256"
-    },
-    {
-      "indexed": true,
-      "name": "blob",
-      "type": "string"
-    }
-  ],
-  "name": "TokenRegistered",
-  "type": "event"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": false,
-      "name": "instance",
-      "type": "address"
-    }
-  ],
-  "name": "InstanceDeployed",
-  "type": "event"
-},
-{
-  "constant": false,
-  "inputs": [
-    {
-      "name": "blob",
-      "type": "string"
-    },
-    {
-      "name": "name",
-      "type": "string"
-    },
-    {
-      "name": "symbol",
-      "type": "string"
-    },
-    {
-      "name": "cap",
-      "type": "uint256"
-    }
-  ],
-  "name": "createToken",
-  "outputs": [
-    {
-      "name": "token",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
-
-  ],
-  "name": "getCurrentTokenIndex",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
-
-  ],
-  "name": "getTokenTemplate",
-  "outputs": [
-    {
-      "name": "",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-}
-]
 
 const DTFactory_Address = {
-  '4':'0x91b5e13cA3ea2A78Ba9b33777f92af15E8177c79',
-  '80001':'0xCa68cb2CD799Eeb92D142Aa25E0E1f99f3eF2b2a',
-  '97':'0x859c5Fd8be133510Fc5c7c15563Fb0a3ccDBb821',
-  '77': '0x859c5Fd8be133510Fc5c7c15563Fb0a3ccDBb821'
+  '4':'0x25A232Fa6eBbd9E1F833ADF036c4472565298A8E',
+  '80001':'0x5Dd32415a7ee9c09C86c3D2d30A01538933768dc',
+  '97':'0x4ADBe3fd5B158B2670716a7C64c7Bd019fFFE4d6',
+  '77': '0xae1DE97AD41250331b0B186cae51af3692Cc31EF'
 };
 
 const DTFactory_BlkNumber = {
-  '4': 7235425,
-  '80001': 4702660,
-  '97': 2218075,
-  '77':16971683
+  '4': 7294094,
+  '80001': 5007496,
+  '97': 2426657,
+  '77':17092257
 }
+
+
+const FixedRateExchange_Address = {
+  '4':'0xB675f4d7D1Bf01D63CA58CA9D616c797178946f0',
+  '80001':'0x56Bbde71d615530AB578683D466c118e71b00337',
+  '97':'0xFdec425C0d3664B40a8578Fb10724A7C53482360',
+  '77':'0x8AFeE56a2969ac4F4204cc676854584b973441bF'
+};
+
+const FixedRateExchange_BlkNumber = {
+  '4': 7294099,
+  '80001': 5007522,
+  '97': 2426671,
+  '77': 17092265,
+};
+
+
+const BPoolFactory_Address = {
+  '4':'0xCE79A7F7666a359dc679c21FD1514108c1300624',
+  '80001':'0x77203739B9aAa48a2402B8369Bf686b04F3fa386',
+  '97':'0x8AFeE56a2969ac4F4204cc676854584b973441bF',
+  '77':'0x6D07c30015E15939329fbCd2FeFd632E29001E78'
+};
+
+const BPoolFactory_BlkNumber = {
+  '4': 7294097,
+  '80001': 5007513,
+  '97': 2426667,
+  '77': 17092263,
+};
+
+
+const DTFactory_ABI = [
+  {
+    "inputs": [
+      {
+        "name": "_template",
+        "type": "address"
+      },
+      {
+        "name": "_collector",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "newTokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "templateAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "tokenName",
+        "type": "string"
+      }
+    ],
+    "name": "TokenCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "tokenName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "tokenSymbol",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "tokenCap",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "registeredBy",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "blob",
+        "type": "string"
+      }
+    ],
+    "name": "TokenRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "instance",
+        "type": "address"
+      }
+    ],
+    "name": "InstanceDeployed",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "blob",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "symbol",
+        "type": "string"
+      },
+      {
+        "name": "cap",
+        "type": "uint256"
+      }
+    ],
+    "name": "createToken",
+    "outputs": [
+      {
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+
+    ],
+    "name": "getCurrentTokenCount",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+
+    ],
+    "name": "getTokenTemplate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
 
 const DataTokenTemplate_ABI = [
   {
@@ -192,7 +219,7 @@ const DataTokenTemplate_ABI = [
         "type": "address"
       },
       {
-        "name": "value",
+        "name": "amount",
         "type": "uint256"
       }
     ],
@@ -227,15 +254,15 @@ const DataTokenTemplate_ABI = [
     "constant": false,
     "inputs": [
       {
-        "name": "from",
+        "name": "sender",
         "type": "address"
       },
       {
-        "name": "to",
+        "name": "recipient",
         "type": "address"
       },
       {
-        "name": "value",
+        "name": "amount",
         "type": "uint256"
       }
     ],
@@ -248,6 +275,22 @@ const DataTokenTemplate_ABI = [
     ],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+
+    ],
+    "name": "BASE_MARKET_FEE_PERCENTAGE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -319,11 +362,11 @@ const DataTokenTemplate_ABI = [
     "constant": false,
     "inputs": [
       {
-        "name": "to",
+        "name": "recipient",
         "type": "address"
       },
       {
-        "name": "value",
+        "name": "amount",
         "type": "uint256"
       }
     ],
@@ -404,7 +447,7 @@ const DataTokenTemplate_ABI = [
         "type": "string"
       },
       {
-        "name": "minter",
+        "name": "minterAddress",
         "type": "address"
       },
       {
@@ -428,14 +471,19 @@ const DataTokenTemplate_ABI = [
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "name": "amount",
-        "type": "uint256"
+        "indexed": true,
+        "name": "consumer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "payer",
+        "type": "address"
       },
       {
         "indexed": false,
-        "name": "did",
-        "type": "bytes32"
+        "name": "amount",
+        "type": "uint256"
       },
       {
         "indexed": false,
@@ -444,17 +492,12 @@ const DataTokenTemplate_ABI = [
       },
       {
         "indexed": false,
-        "name": "receiver",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "startedAt",
+        "name": "timestamp",
         "type": "uint256"
       },
       {
-        "indexed": false,
-        "name": "feeCollector",
+        "indexed": true,
+        "name": "mrktFeeCollector",
         "type": "address"
       },
       {
@@ -475,7 +518,7 @@ const DataTokenTemplate_ABI = [
         "type": "bytes32"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "name": "consumer",
         "type": "address"
       },
@@ -486,21 +529,55 @@ const DataTokenTemplate_ABI = [
       },
       {
         "indexed": false,
-        "name": "did",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
         "name": "serviceId",
         "type": "uint256"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "name": "provider",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "timestamp",
+        "type": "uint256"
       }
     ],
     "name": "OrderFinished",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "currentMinter",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "newMinter",
+        "type": "address"
+      }
+    ],
+    "name": "MinterProposed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "currentMinter",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "newMinter",
+        "type": "address"
+      }
+    ],
+    "name": "MinterApproved",
     "type": "event"
   },
   {
@@ -559,7 +636,7 @@ const DataTokenTemplate_ABI = [
         "type": "string"
       },
       {
-        "name": "minter",
+        "name": "minterAddress",
         "type": "address"
       },
       {
@@ -610,7 +687,7 @@ const DataTokenTemplate_ABI = [
     "constant": false,
     "inputs": [
       {
-        "name": "receiver",
+        "name": "consumer",
         "type": "address"
       },
       {
@@ -618,20 +695,12 @@ const DataTokenTemplate_ABI = [
         "type": "uint256"
       },
       {
-        "name": "did",
-        "type": "bytes32"
-      },
-      {
         "name": "serviceId",
         "type": "uint256"
       },
       {
-        "name": "feeCollector",
+        "name": "mrktFeeCollector",
         "type": "address"
-      },
-      {
-        "name": "feePercentage",
-        "type": "uint256"
       }
     ],
     "name": "startOrder",
@@ -658,10 +727,6 @@ const DataTokenTemplate_ABI = [
         "type": "uint256"
       },
       {
-        "name": "did",
-        "type": "bytes32"
-      },
-      {
         "name": "serviceId",
         "type": "uint256"
       }
@@ -677,38 +742,25 @@ const DataTokenTemplate_ABI = [
   {
     "constant": false,
     "inputs": [
-
-    ],
-    "name": "pause",
-    "outputs": [
-
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-
-    ],
-    "name": "unpause",
-    "outputs": [
-
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
       {
-        "name": "minter",
+        "name": "newMinter",
         "type": "address"
       }
     ],
-    "name": "setMinter",
+    "name": "proposeMinter",
+    "outputs": [
+
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+
+    ],
+    "name": "approveMinter",
     "outputs": [
 
     ],
@@ -773,7 +825,7 @@ const DataTokenTemplate_ABI = [
     "outputs": [
       {
         "name": "",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "payable": false,
@@ -820,11 +872,11 @@ const DataTokenTemplate_ABI = [
     "inputs": [
 
     ],
-    "name": "isInitialized",
+    "name": "minter",
     "outputs": [
       {
         "name": "",
-        "type": "bool"
+        "type": "address"
       }
     ],
     "payable": false,
@@ -836,7 +888,7 @@ const DataTokenTemplate_ABI = [
     "inputs": [
 
     ],
-    "name": "isPaused",
+    "name": "isInitialized",
     "outputs": [
       {
         "name": "",
@@ -869,44 +921,12 @@ const DataTokenTemplate_ABI = [
     "payable": false,
     "stateMutability": "pure",
     "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "name": "feePercentage",
-        "type": "uint256"
-      }
-    ],
-    "name": "calculateTotalFee",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
   }
 ]
 
 const ERC20Token_ABI = [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint8","name":"decimals","type":"uint8"},{"internalType":"uint256","name":"cap","type":"uint256"},{"internalType":"uint256","name":"initialSupply","type":"uint256"},{"internalType":"bool","name":"transferEnabled","type":"bool"},{"internalType":"bool","name":"mintingFinished","type":"bool"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[],"name":"MintFinished","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleGranted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[],"name":"TransferEnabled","type":"event"},{"inputs":[],"name":"BUILT_ON","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DEFAULT_ADMIN_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MINTER_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"OPERATOR_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"approveAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"approveAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burnFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"cap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"}],"name":"getRoleAdmin","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"getRoleMember","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"}],"name":"getRoleMemberCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"grantRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"hasRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"tokenAmount","type":"uint256"}],"name":"recoverERC20","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"renounceRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"revokeRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transferAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"transferAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"transferFromAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transferFromAndCall","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"mintingFinished","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"transferEnabled","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"finishMinting","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"enableTransfer","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 
-
 const FixedRateExchange_ABI =  [
-  {
-    "inputs": [
-
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
   {
     "anonymous": false,
     "inputs": [
@@ -973,11 +993,6 @@ const FixedRateExchange_ABI =  [
         "indexed": true,
         "name": "exchangeOwner",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "timestamp",
-        "type": "uint256"
       }
     ],
     "name": "ExchangeActivated",
@@ -995,11 +1010,6 @@ const FixedRateExchange_ABI =  [
         "indexed": true,
         "name": "exchangeOwner",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "timestamp",
-        "type": "uint256"
       }
     ],
     "name": "ExchangeDeactivated",
@@ -1170,23 +1180,7 @@ const FixedRateExchange_ABI =  [
         "type": "bytes32"
       }
     ],
-    "name": "activate",
-    "outputs": [
-
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "exchangeId",
-        "type": "bytes32"
-      }
-    ],
-    "name": "deactivate",
+    "name": "toggleExchangeState",
     "outputs": [
 
     ],
@@ -1307,41 +1301,6 @@ const FixedRateExchange_ABI =  [
     "type": "function"
   }
 ]
-
-const FixedRateExchange_Address = {
-  '4':'0xc8315a112f27aE905986c3a46B7c1b5257F07C6C',
-  '80001':'0xFf0218B7E6F7fdFf4e1EAbCDCB5EEc018439bF02',
-  '97':'0xE1D1D66A37C22cCCfbbbbD15Dc77B41c44BF681f',
-  '77':''
-};
-
-const FixedRateExchange_BlkNumber = {
-  '4': 7235436,
-  '80001': 4702694,
-  '97': 2218089,
-  '77': 16971690,
-};
-
-const BPool_Address = {
-  '4':'0x79012698b997865c2437F5920A371F819F454d8f',
-  '80001':'0x855069310D7875a76a3c2fd91808831Ca907D1A5',
-  '97':'0xa1f98C3dC4350AA3280c38Cb21B286A53b0b6B16',
-  '77':'0xa1f98C3dC4350AA3280c38Cb21B286A53b0b6B16'
-};
-
-const BPoolFactory_Address = {
-  '4':'0xc239e88F8921EE1Cb58E93945eAd95206A989142',
-  '80001':'0x4fAF73709bDBab1e60b2a69822ea717C680FF842',
-  '97':'0xc65889D17aa15F57D324Ce16B9296243Cc04824b',
-  '77':'0xc65889D17aa15F57D324Ce16B9296243Cc04824b'
-};
-
-const BPoolFactory_BlkNumber = {
-  '4': 7235434,
-  '80001': 4702679,
-  '97': 2218085,
-  '77': 16971686,
-};
 
 const BPool_ABI = [
   {
@@ -2954,354 +2913,351 @@ const BPool_ABI = [
   }
 ]
 
-const BPoolFactory_ABI = [{
-  "constant": true,
-  "inputs": [
+const BPoolFactory_ABI = [
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_TOTAL_WEIGHT",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_TOTAL_WEIGHT",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "BPOW_PRECISION",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "BPOW_PRECISION",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MIN_WEIGHT",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MIN_WEIGHT",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MIN_FEE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MIN_FEE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MIN_BALANCE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MIN_BALANCE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "INIT_POOL_SUPPLY",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "INIT_POOL_SUPPLY",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_OUT_RATIO",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_OUT_RATIO",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_BOUND_TOKENS",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_BOUND_TOKENS",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MIN_BOUND_TOKENS",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MIN_BOUND_TOKENS",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MIN_BPOW_BASE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MIN_BPOW_BASE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_FEE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "bpoolTemplate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_BPOW_BASE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_FEE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "BONE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_BPOW_BASE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "EXIT_FEE",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "BONE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_WEIGHT",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "EXIT_FEE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "MAX_IN_RATIO",
-  "outputs": [
-    {
-      "name": "",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-},
-{
-  "inputs": [
-    {
-      "name": "bpoolTemplate",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "constructor"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": true,
-      "name": "newBPoolAddress",
-      "type": "address"
-    },
-    {
-      "indexed": true,
-      "name": "bpoolTemplateAddress",
-      "type": "address"
-    }
-  ],
-  "name": "BPoolCreated",
-  "type": "event"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": false,
-      "name": "bpoolAddress",
-      "type": "address"
-    },
-    {
-      "indexed": true,
-      "name": "registeredBy",
-      "type": "address"
-    },
-    {
-      "indexed": true,
-      "name": "registeredAt",
-      "type": "uint256"
-    }
-  ],
-  "name": "BPoolRegistered",
-  "type": "event"
-},
-{
-  "anonymous": false,
-  "inputs": [
-    {
-      "indexed": false,
-      "name": "instance",
-      "type": "address"
-    }
-  ],
-  "name": "InstanceDeployed",
-  "type": "event"
-},
-{
-  "constant": false,
-  "inputs": [
+    ],
+    "name": "MAX_WEIGHT",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
 
-  ],
-  "name": "newBPool",
-  "outputs": [
-    {
-      "name": "bpool",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "nonpayable",
-  "type": "function"
-},
-{
-  "constant": true,
-  "inputs": [
+    ],
+    "name": "MAX_IN_RATIO",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_bpoolTemplate",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "newBPoolAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "bpoolTemplateAddress",
+        "type": "address"
+      }
+    ],
+    "name": "BPoolCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "bpoolAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "registeredBy",
+        "type": "address"
+      }
+    ],
+    "name": "BPoolRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "instance",
+        "type": "address"
+      }
+    ],
+    "name": "InstanceDeployed",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
 
-  ],
-  "name": "getBPool",
-  "outputs": [
-    {
-      "name": "",
-      "type": "address"
-    }
-  ],
-  "payable": false,
-  "stateMutability": "view",
-  "type": "function"
-}
+    ],
+    "name": "newBPool",
+    "outputs": [
+      {
+        "name": "bpool",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ]
+

@@ -38,7 +38,6 @@ async function getUserDataTokens(_address = getAddress()){
             events.forEach((event)=>{
                 datatokensRegistered.push({
                     blob: event.returnValues.blob,
-                    registeredAt: event.returnValues.registeredAt,
                     registeredBy: event.returnValues.registeredBy,
                     tokenAddress: event.returnValues.tokenAddress,
                     tokenCap: event.returnValues.tokenCap,
@@ -71,7 +70,6 @@ async function isUserDataToken(_tokenAddress, _address = getAddress()){
                 if (_tokenAddress === event.returnValues.tokenAddress){
                     res({
                         blob: event.returnValues.blob,
-                        registeredAt: event.returnValues.registeredAt,
                         registeredBy: event.returnValues.registeredBy,
                         tokenAddress: event.returnValues.tokenAddress,
                         tokenCap: event.returnValues.tokenCap,
@@ -513,56 +511,23 @@ async function getExchangeRate(_exchangeId){
     return web3.utils.fromWei(result);
 }
 
-async function enableExchange(_exchangeId){
+async function toggleExchangeState(_exchangeId){
     let promise = new Promise((res, rej) => {
 
-        FixedRateExchange.methods.activate(_exchangeId).send({from:getAddress()}, function(error, result) {
+        FixedRateExchange.methods.toggleExchangeState(_exchangeId).send({from:getAddress()}, function(error, result) {
             if (!error)
                 res(result);
             else{
                 rej(error);
             }
         }).on('receipt', (receipt) => {
-            console.log('FixedRateExchange/enableExchange/receipt\t', receipt);
+            console.log('FixedRateExchange/toggleExchangeState/receipt\t', receipt);
         }).on('confirmation', (confirmationNumber, receipt) => {
             if (confirmationNumber<=1){
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
-                    html: `Exchange has been Enabled.`
-                });
-            }
-        }).on('error', (err) => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Transaction Error',
-                html: err.message,
-            });
-            console.log(err);
-        })
-
-    });
-    let result = await promise;
-    return result;
-}
-
-async function disableExchange(_exchangeId){
-    let promise = new Promise((res, rej) => {
-
-        FixedRateExchange.methods.deactivate(_exchangeId).send({from:getAddress()}, function(error, result) {
-            if (!error)
-                res(result);
-            else{
-                rej(error);
-            }
-        }).on('receipt', (receipt) => {
-            console.log('FixedRateExchange/disableExchange/receipt\t', receipt);
-        }).on('confirmation', (confirmationNumber, receipt) => {
-            if (confirmationNumber<=1){
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Successful',
-                    html: `Exchange has been Disabled.`
+                    html: `Exchange State Updated.`
                 });
             }
         }).on('error', (err) => {

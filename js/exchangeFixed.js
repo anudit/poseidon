@@ -215,12 +215,12 @@ function setExchangeRateUI(){
 
 function enableExchangeUI(){
     let ex=document.querySelector('#manageExchangeList').value;
-    enableExchange(ex);
+    toggleExchangeState(ex);
 }
 
 function disableExchangeUI(){
     let ex=document.querySelector('#manageExchangeList').value;
-    disableExchange(ex);
+    toggleExchangeState(ex);
 }
 
 async function exchangeTokensUI(){
