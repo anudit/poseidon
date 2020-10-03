@@ -11,7 +11,7 @@ async function init(accounts = []){
         });
     }
 
-    document.querySelector('#tokenList').innerHTML = `<h3>${loadingQuote()}</h3>`;
+    document.querySelector('#message').innerHTML = loadingQuote();
     refreshUI()
 
 }
@@ -21,10 +21,11 @@ async function refreshUI(){
     getUserDataTokens().then((tokens)=>{
 
         if (tokens.length <= 0){
-            document.querySelector('#tokenList').innerHTML = `No Tokens found. Lets go create some <a href='./create.html'>here</a>.`;
+            document.querySelector('#message').style.display = "block";
+            document.querySelector('#message').innerHTML = `No Tokens found. <br/>Let's go create some <a href='./create.html'>here</a>.`;
         }
         else {
-            document.querySelector('#tokenList').innerHTML = "";
+            document.querySelector('#message').style.display = "none";
             tokens.forEach(token => {
                 let html =  `
                     <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item slide-top filter-token" data-name="${token.tokenName}">
@@ -45,6 +46,12 @@ async function refreshUI(){
             })
         }
 
+    }).then(()=>{
+        let openSearchQuery = getParameterByName('n');
+        if (openSearchQuery !== null){
+            document.querySelector('#search').value = openSearchQuery;
+            filterTokens(document.querySelector('#search').value);
+        }
     })
 
 }
@@ -52,12 +59,21 @@ async function refreshUI(){
 function filterTokens(searchString) {
     var x, i;
     x = document.querySelectorAll(".filter-token");
-    x.forEach((e)=>{
+    var noResults = true;
+    for(i=0; i < x.length;i++){
+        var e = x[i];
         if (searchString=="" || e.getAttribute("data-name").toLowerCase().includes(searchString.toLowerCase()) === true){
+            document.querySelector('#message').style.display = "none";
             e.style.display = 'flex';
+            noResults = false;
         }
         else{
             e.style.display = 'none';
         }
-    })
+    }
+    if (noResults === true){
+        console.log('found no res')
+        document.querySelector('#message').style.display = "block";
+        document.querySelector('#message').innerHTML = `No Tokens found by this name. <br/>Let's go create one <a href='./create.html'>here</a>.`;
+    }
   }
