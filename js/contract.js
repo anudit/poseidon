@@ -57,11 +57,70 @@ async function getUserDataTokens(_address = getAddress()){
     return result;
 }
 
-async function isUserDataToken(_tokenAddress, _address = getAddress()){
+async function getAllDataTokens(_address = getAddress()){
     let promise = new Promise((res, rej) => {
 
         DTFactory.getPastEvents('TokenRegistered', {
-            filter: {registeredBy: _address},
+            fromBlock: DTFactory_BlkNumber[netId],
+            toBlock: 'latest'
+        })
+        .then((events) => {
+            let datatokensRegistered = [];
+            events.forEach((event)=>{
+                datatokensRegistered.push({
+                    blob: event.returnValues.blob,
+                    registeredBy: event.returnValues.registeredBy,
+                    tokenAddress: event.returnValues.tokenAddress,
+                    tokenCap: event.returnValues.tokenCap,
+                    tokenName: event.returnValues.tokenName,
+                    tokenSymbol: event.returnValues.tokenSymbol
+                })
+            })
+            res(datatokensRegistered)
+
+        })
+        .catch(function(error){
+           rej(error);
+        });
+
+    });
+    let result = await promise;
+    return result;
+}
+
+async function getUserTokensFromBalance(_address = getAddress()){
+    let promise = new Promise((res, rej) => {
+
+        getAllDataTokens().then(async (allTokens)=>{
+
+            const tokenBalanceRequests = [];
+            allTokens.forEach((token)=>{
+                tokenBalanceRequests.push(dataTokenBalanceOf(token.tokenAddress, _address))
+            })
+
+            let tokenBalancePromise = await Promise.all(tokenBalanceRequests);
+            let userTokens = []
+            for (var i =0; i<tokenBalancePromise.length;i++){
+                if (parseFloat(tokenBalancePromise[i]) > 0 || allTokens[i].registeredBy.toLowerCase() === _address.toLowerCase()){
+                    let newDict = allTokens[i];
+                    newDict['userBalance'] = tokenBalancePromise[i];
+                    userTokens.push(newDict);
+                }
+            }
+
+            res(userTokens)
+
+        })
+
+    });
+    let result = await promise;
+    return result;
+}
+
+async function getTokenData(_tokenAddress){
+    let promise = new Promise((res, rej) => {
+
+        DTFactory.getPastEvents('TokenRegistered', {
             fromBlock: DTFactory_BlkNumber[netId],
             toBlock: 'latest'
         })

@@ -18,7 +18,7 @@ async function init(accounts = []){
 
 async function refreshUI(){
 
-    getUserDataTokens().then((tokens)=>{
+    getUserTokensFromBalance().then((tokens)=>{
 
         if (tokens.length <= 0){
             document.querySelector('#message').style.display = "block";
@@ -30,7 +30,7 @@ async function refreshUI(){
                 let html =  `
                     <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item slide-top filter-token" data-name="${token.tokenName}">
                         <div class="vacancy-title">${token.tokenName}</div>
-                        <div class="vacancy-text">${trimAddress(token.tokenAddress)}</div>
+                        <div class="vacancy-text">${token.userBalance} ${token.tokenSymbol}</div>
                         <div class="vacancy-arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12">
                             <polygon points="0 10.59 4.58 6 0 1.41 1.41 0 7.41 6 1.41 12" />
