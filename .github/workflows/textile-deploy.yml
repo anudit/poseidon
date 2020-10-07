@@ -30,13 +30,12 @@ jobs:
     - run: echo "ipns link - ${{ steps.push.outputs.ipnsUrl }}"
     - run: echo "hub - ${{ steps.push.outputs.hub }}"
     - run: echo "www - ${{ steps.push.outputs.www }}"
-
     - name: Bucket Replication
-        uses: textileio/github-action-bucket-push@v1
-        id: replicate
-        with:
-          cid: ${{ steps.push.outputs.ipns }}
-          bucket: 'ocean'
-          pinata_key: ${{ secrets.PINATA_KEY }}
-          pinata_secret: ${{ secrets.PINATA_SECRET }}
-          pinata_name: 'poseidon-pin'
+      uses: textileio/github-action-bucket-push@v1
+      id: replicate
+      with:
+        cid: ${{ steps.push.outputs.ipns }}
+        bucket: 'ocean'
+        pinata_key: ${{ secrets.PINATA_KEY }}
+        pinata_secret: ${{ secrets.PINATA_SECRET }}
+        pinata_name: 'poseidon-pin'
