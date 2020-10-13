@@ -62,29 +62,7 @@ async function transfer(){
 }
 
 async function explore(){
-    let blobData = await dataTokenBlob(pageTokenData.tokenAddress);
-    console.log(blobData);
-    let jsonData = await getIPFS(blobData);
-    Swal.fire({
-        icon: undefined,
-        title: 'DataToken Details',
-        html: `
-        <pre style="text-align:left;">${JSON.stringify(jsonData, undefined, 4)}</pre>
-        `,
-        showCancelButton: false,
-        showCloseButton: true,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Copy Details',
-        footer: `
-            <a href="https://ipfs.io/ipfs/${blobData}" target='_blank'>
-                View on IPFS&nbsp;
-                <svg fill="#0d6efd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="20px" height="20px" style=" margin-top: -3px; "><path d="M 25.980469 2.9902344 A 1.0001 1.0001 0 0 0 25.869141 3 L 20 3 A 1.0001 1.0001 0 1 0 20 5 L 23.585938 5 L 13.292969 15.292969 A 1.0001 1.0001 0 1 0 14.707031 16.707031 L 25 6.4140625 L 25 10 A 1.0001 1.0001 0 1 0 27 10 L 27 4.1269531 A 1.0001 1.0001 0 0 0 25.980469 2.9902344 z M 6 7 C 4.9069372 7 4 7.9069372 4 9 L 4 24 C 4 25.093063 4.9069372 26 6 26 L 21 26 C 22.093063 26 23 25.093063 23 24 L 23 14 L 23 11.421875 L 21 13.421875 L 21 16 L 21 24 L 6 24 L 6 9 L 14 9 L 16 9 L 16.578125 9 L 18.578125 7 L 16 7 L 14 7 L 6 7 z"/></svg>
-            </a>`
-      }).then((result) => {
-        if (result.isConfirmed) {
-            copyToClipboard(JSON.stringify(jsonData));
-        }
-      })
+    window.location.href = `./viewToken.html?add=${pageTokenData.tokenAddress}`;
 }
 
 
@@ -92,7 +70,7 @@ async function addToMetamask(){
     const tokenAddress = pageTokenData.tokenAddress;
     const tokenSymbol = pageTokenData.tokenSymbol;
     const tokenDecimals = 18;
-    const tokenImage = `https://poseidon.anudit.dev/images/favicon-black.png`;
+    const tokenImage = `https://poseidon.world/images/favicon-black.png`;
 
     try {
     const wasAdded = await ethereum.request({

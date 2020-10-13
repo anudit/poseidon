@@ -28,7 +28,7 @@ async function refreshUI(){
             document.querySelector('#message').style.display = "none";
             tokens.forEach(token => {
                 let html =  `
-                    <a href="./manage-token.html?add=${token.tokenAddress}" class="vacancy-item slide-top filter-token" data-name="${token.tokenName}">
+                    <a href="./manageToken.html?add=${token.tokenAddress}" class="vacancy-item slide-top filter-token" data-name="${token.tokenName}">
                         <div class="vacancy-title">${token.tokenName}</div>
                         <div class="vacancy-text">${token.userBalance} ${token.tokenSymbol}</div>
                         <div class="vacancy-arrow">

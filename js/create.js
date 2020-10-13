@@ -42,14 +42,17 @@ async function create(e){
         createBtn.classList.add('disabled');
 
         let ipfsData = await storeIPFS({
+            'created': new Date().toUTCString(),
             'dataTokenName':document.querySelector('#inp_name').value,
             'dataTokenSymbol': document.querySelector('#inp_sym').value,
             'dataTokenCap':document.querySelector('#inp_cap').value,
             'dataSource':document.querySelector('#inp_source').value,
+            'dataSample':document.querySelector('#inp_sample').value,
             'dataDescription':document.querySelector('#inp_dataDesc').value,
             'dataType': document.querySelector('#inp_dataType').value,
             'dataLicense': document.querySelector('#inp_dataLicense').value,
         });
+
         console.log(ipfsData);
         console.log(`https://ipfs.io/ipfs/${ipfsData.cid}`)
 

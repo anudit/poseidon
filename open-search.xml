@@ -2,5 +2,5 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
     <ShortName>Poseidon</ShortName>
     <Description>Lookup your DataTokens</Description>
-    <Url type="text/html" template="https://poseidon.anudit.dev/manage.html?n={searchTerms}"/>
+    <Url type="text/html" template="https://poseidon.world/manage.html?n={searchTerms}"/>
 </OpenSearchDescription>
