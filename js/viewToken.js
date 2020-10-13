@@ -38,7 +38,7 @@ async function refreshUI(_tokenData){
             document.querySelector('#tokenDescription').innerText = jsonData.dataDescription;
             document.querySelector('#tokenType').innerText = jsonData.dataType;
             document.querySelector('#tokenLicense').innerText = jsonData.dataLicense;
-            document.querySelector('#created').innerText = jsonData.created;
+            document.querySelector('#created').innerText = new Date(jsonData.created).toLocaleDateString();
         });
     });
     dataTokenBalanceOf(_tokenData.tokenAddress).then((balance)=>{

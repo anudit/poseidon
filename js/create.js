@@ -43,6 +43,7 @@ async function create(e){
 
         let ipfsData = await storeIPFS({
             'created': new Date().toUTCString(),
+            'createdBy': 'https://poseidon.world/',
             'dataTokenName':document.querySelector('#inp_name').value,
             'dataTokenSymbol': document.querySelector('#inp_sym').value,
             'dataTokenCap':document.querySelector('#inp_cap').value,
