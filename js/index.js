@@ -36,14 +36,45 @@ window.addEventListener('load', async () => {
         }
 
     } else{
-        alert("No Web3.");
-        setupApp(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/9f34d0bf5e1b4b36914fd5bc66c50b05'))
+        let newProvider = new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/9f34d0bf5e1b4b36914fd5bc66c50b05');
+        setupApp(
+            newProvider,
+            [''],
+            true
+        )
     }
 });
 
-async function setupApp(provider, accounts = []){
+async function setupApp(provider, accounts = [], IS_BURNER = false){
     window.web3 = new Web3(provider);
-    if (provider.on){
+
+    if (IS_BURNER == true){
+
+        let burnerAccount;
+        if(localStorage.getItem("BURNER_PK") != null){
+            Swal.fire({
+                icon: 'info',
+                title: 'No Web3 Wallet Found.',
+                text: 'Using a past Local Burner Wallet 🔥',
+                footer: 'Try using a wallet like &nbsp;<a href="https://metamask.io/download.html" target="_blank"> MetaMask. </a>'
+            })
+            burnerAccount = web3.eth.accounts.privateKeyToAccount(localStorage.getItem("BURNER_PK"));
+        }
+        else{
+            Swal.fire({
+                icon: 'info',
+                title: 'No Web3 Wallet Found.',
+                text: 'Creating a Local Burner Wallet 🔥',
+                footer: 'Try using a wallet like &nbsp;<a href="https://metamask.io/download.html" target="_blank"> MetaMask. </a>'
+            })
+            burnerAccount = web3.eth.accounts.create();
+            localStorage.setItem("BURNER_PK", burnerAccount.privateKey);
+        }
+        web3.currentProvider.selectedAddress = burnerAccount.address;
+        accounts = [burnerAccount.address];
+    }
+
+    if (provider && provider.on){
         provider.on('disconnect', ()=>{
             window.location.reload()
         });
@@ -255,12 +286,12 @@ function makeDark(){
     localStorage.setItem("isDark", true);
     document.body.style.filter = 'invert(1)';
     document.body.style.backgroundColor = '#000';
-    document.querySelector('#toggleThemeBtn').innerText = '💡';
+    document.querySelector('#toggleThemeBtn').innerHTML = '<span style="filter: invert(1);">☀️<span>';
 }
 
 function makeLight(){
     localStorage.setItem("isDark", false);
     document.body.style.filter = 'invert(0)';
     document.body.style.backgroundColor = '#f7f7f7';
-    document.querySelector('#toggleThemeBtn').innerText = '🌑';
+    document.querySelector('#toggleThemeBtn').innerHTML = '🌑';
 }
