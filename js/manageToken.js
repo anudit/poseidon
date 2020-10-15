@@ -99,23 +99,3 @@ async function addToMetamask(){
 function explorer(){
     window.open(`${chainExplorers[netId]}/address/${pageTokenData.tokenAddress}`, '_blank');
 }
-
-
-async function getIPFS(_hash = ''){
-
-    let promise = new Promise(async (res, rej) => {
-
-        fetch(`https://ipfs.io/ipfs/${_hash}`)
-        .then(response => response.json())
-        .then((data) => {
-            res(data);
-        })
-        .catch(e=>{
-            rej(e);
-        })
-    });
-    let result = await promise;
-    return result;
-
-}
-

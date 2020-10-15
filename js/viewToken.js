@@ -45,7 +45,6 @@ async function refreshUI(_tokenData){
         document.querySelector('#userBalance').innerText = numberWithCommas(parseFloat(balance).toFixed(3)) + ' ' + _tokenData.tokenSymbol;
     });
 
-
 }
 
 function downloadSample(){
@@ -53,14 +52,14 @@ function downloadSample(){
 }
 
 function openOnIPFS(){
-    window.open(`https://ipfs.io/ipfs/${blobData}`, '_blank');
+    window.open(`https://gateway.pinata.cloud/ipfs/${blobData}`, '_blank');
 }
 
 async function getIPFS(_hash = ''){
 
     let promise = new Promise(async (res, rej) => {
 
-        fetch(`https://ipfs.io/ipfs/${_hash}`)
+        fetch(`https://gateway.pinata.cloud/ipfs/${_hash}`)
         .then(response => response.json())
         .then((data) => {
             res(data);

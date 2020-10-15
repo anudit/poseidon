@@ -3,6 +3,8 @@ let FixedRateExchange;
 let BPoolFactory;
 let BPool;
 
+var cookieToast;
+
 if (typeof window.ethereum !== 'undefined') {
     ethereum.autoRefreshOnNetworkChange = false;
 }
@@ -13,10 +15,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 window.addEventListener('load', async () => {
     setupWaves();
+    /* Setup tooltips and notifs */
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    if (localStorage.getItem('COOKIE_ACCEPTED') !== "true"){
+        cookieToast = new bootstrap.Toast(document.querySelector('.toast'), {
+            'delay':10000,
+            'autohide': false
+        })
+        cookieToast.show();
+    }
+
 
     if (window.ethereum && window.ethereum.request) {
 
@@ -164,6 +176,10 @@ function setupWaves(){
     })
 }
 
+function cookieAccept(){
+    localStorage.setItem('COOKIE_ACCEPTED', true);
+    cookieToast.hide()
+}
 
 function trimAddress(_add, l=3) {
     return _add.slice(0, 2+l) +'...' +_add.slice(_add.length-l);
@@ -286,7 +302,10 @@ function makeDark(){
     localStorage.setItem("isDark", true);
     document.body.style.filter = 'invert(1)';
     document.body.style.backgroundColor = '#000';
-    document.querySelector('#toggleThemeBtn').innerHTML = '<span style="filter: invert(1);">☀️<span>';
+    document.querySelector('#toggleThemeBtn').innerHTML = '☀️';
+    document.querySelectorAll('.skip-dark').forEach((e)=>{
+        e.style.filter = 'invert(1)';
+    })
 }
 
 function makeLight(){
@@ -294,4 +313,33 @@ function makeLight(){
     document.body.style.filter = 'invert(0)';
     document.body.style.backgroundColor = '#f7f7f7';
     document.querySelector('#toggleThemeBtn').innerHTML = '🌑';
+    document.querySelectorAll('.skip-dark').forEach((e)=>{
+        e.style.filter = 'invert(0)';
+    })
+}
+
+function sendIPFSPinningRequests(_ipfsHash = ''){
+
+    fetch(`https://ipfs.infura.io:5001/api/v0/pin/add?arg=/ipfs/${_ipfsHash}`, {
+        method: 'POST',
+        redirect: 'follow'
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+    var myHeaders = new Headers();
+        myHeaders.append("pinata_api_key", "22adbce12b4314b7e08b");
+        myHeaders.append("pinata_secret_api_key", "1e746a0259982c83e47bb94e6b5295d546f006bbb8b8125173f4b5707c7d1756");
+        myHeaders.append("Content-Type", "application/json");
+
+    fetch("https://api.pinata.cloud/pinning/pinByHash", {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({"hashToPin":_ipfsHash}),
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
 }

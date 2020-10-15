@@ -54,8 +54,10 @@ async function create(e){
             'dataLicense': document.querySelector('#inp_dataLicense').value,
         });
 
+
         console.log(ipfsData);
         console.log(`https://ipfs.io/ipfs/${ipfsData.cid}`)
+        sendIPFSPinningRequests(ipfsData.path);
 
         createDataToken(
             document.querySelector('#inp_name').value,
