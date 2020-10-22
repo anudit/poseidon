@@ -61,57 +61,64 @@ async function setupPoolLists(){
       }).setChoices(async function() {
         return [
             {
-                label: '1a Rinkeby',
+                label: 'Ethereum Mainnet',
                 id: 1,
                 disabled: false,
                 choices: [
                     {
-                        'label':'TESTToken',
-                        'value':'0x22c4fea29916b7e06cc11fb83f044321c1d01c5f'
-                    },
+                        'label':'OCEAN Token',
+                        'value':'0x967da4048cD07aB37855c090aAF366e4ce1b9F48'
+                    }
+                ],
+            },
+            {
+                label: 'Rinkeby Testnet',
+                id: 2,
+                disabled: false,
+                choices: [
                     {
                         'label':'OCEAN Token',
                         'value':'0x8967bcf84170c91b0d24d4302c2376283b0b3a07'
                     }
                 ],
             }
-        ,
-        await fetch(
-          'https://defiprime.com/defiprime.tokenlist.json'
-        )
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            let retData=  data.tokens.map(function(token) {
-                return { value: token.address, label: `${token.name} (${token.symbol})` };
-            });
-            // console.log(retData);
-            return {
-                label: 'DefiPrime TokenList',
-                id: 2,
-                disabled: false,
-                choices: retData,
-              }
-        }),
-        await fetch(
-            'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://defi.cmc.eth.link'
-          )
-          .then(function(response) {
-              return response.json();
-          })
-          .then(function(data) {
-              let retData=  data.tokens.map(function(token) {
-                  return { value: token.address, label: `${token.name} (${token.symbol})` };
-              });
-            //   console.log(retData);
-              return {
-                label: 'CoinMarketCap Defi TokenList',
-                id: 3,
-                disabled: false,
-                choices: retData,
-              }
-          })
+        // ,
+        // await fetch(
+        //   'https://defiprime.com/defiprime.tokenlist.json'
+        // )
+        // .then(function(response) {
+        //     return response.json();
+        // })
+        // .then(function(data) {
+        //     let retData=  data.tokens.map(function(token) {
+        //         return { value: token.address, label: `${token.name} (${token.symbol})` };
+        //     });
+        //     // console.log(retData);
+        //     return {
+        //         label: 'DefiPrime TokenList',
+        //         id: 2,
+        //         disabled: false,
+        //         choices: retData,
+        //       }
+        // }),
+        // await fetch(
+        //     'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://defi.cmc.eth.link'
+        //   )
+        //   .then(function(response) {
+        //       return response.json();
+        //   })
+        //   .then(function(data) {
+        //       let retData=  data.tokens.map(function(token) {
+        //           return { value: token.address, label: `${token.name} (${token.symbol})` };
+        //       });
+        //     //   console.log(retData);
+        //       return {
+        //         label: 'CoinMarketCap Defi TokenList',
+        //         id: 3,
+        //         disabled: false,
+        //         choices: retData,
+        //       }
+        //   })
         ];
       });
 

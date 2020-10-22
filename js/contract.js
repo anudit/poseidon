@@ -17,7 +17,7 @@ async function createDataToken(_name, _symbol, _cap, _blob){
             console.log(err);
           }).then( (receipt) => {
               console.log(receipt);
-            // window.location=`./manageToken.html?add=${receipt.events.InstanceDeployed.returnValues.instance}`
+            window.location=`./manageToken.html?add=${receipt.events.InstanceDeployed.returnValues.instance}`
           })
 
     });

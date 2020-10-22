@@ -1,4 +1,5 @@
 const supportedChains = {
+  '1':'Ethereum Mainnet',
   '4':'Rinkeby Testnet',
   '80001':'Matic Mumbai Testnet',
   '97': 'Binance Smart Chain Testnet',
@@ -6,6 +7,7 @@ const supportedChains = {
 }
 
 const chainExplorers = {
+  '1':'https://etherscan.io',
   '4':'https://rinkeby.etherscan.io',
   '80001':'https://mumbai-explorer.matic.today',
   '97': 'https://testnet.bscscan.com',
@@ -14,47 +16,53 @@ const chainExplorers = {
 
 
 const DTFactory_Address = {
+  '1':'0x57317f97E9EA49eBd19f7c9bB7c180b8cDcbDeB9',
   '4':'0x3fd7A00106038Fb5c802c6d63fa7147Fe429E83a',
-  '80001':'0xA495d84218eb9e4aB7d0bfD7846e4ff0f20192EF',
-  '97':'0x26AdA69AC92152FCe0a348e0807fd9D2DFac9Af7',
-  '77': '0x2df601C116896b61d9E9DC2222676e4BB430f6F1'
+  '80001':'0x4e07bf34527466E3412C5B59DB45A407b0ff0dBD',
+  '97':'0x7aA0582a7579B3F8C9AD0a294e68f33c5BB80135',
+  '77': '0xd11bc3E3b4b3841B137A844ae57c034475111a06'
 };
 
 const DTFactory_BlkNumber = {
+  '1': 11105560,
   '4': 7298804,
-  '80001': 5465829,
-  '97': 2741667,
-  '77': 17280903
+  '80001': 5848017,
+  '97': 3004018,
+  '77': 17437521
 }
 
 
 const FixedRateExchange_Address = {
+  '1':'0x608d05214E42722B94a54cF6114d4840FCfF84e1',
   '4':'0xeD1DfC5F3a589CfC4E8B91C1fbfC18FC6699Fbde',
-  '80001':'0x2Cc04bF2655B7d2168024767dA7F6DcB64603083',
-  '97':'0xD2E3F386E2CEbBEF8439007d06EA1C4f5941185D',
-  '77':'0x27Db02024057F33B2cDf1519363db9769C87DCda'
+  '80001':'0x7C453EE60311dEBfC14e68F511F9d36E77AB0357',
+  '97':'0xF6FC621BF745390D00bDD256BA190Fe27fCEEF85',
+  '77':'0x81D617efBD18507eBC4B0fe1fB81F25d56E35C57'
 };
 
 const FixedRateExchange_BlkNumber = {
+  '1': 11105603,
   '4': 7298807,
-  '80001': 5465856,
-  '97': 2741686,
-  '77': 17280912,
+  '80001': 5848051,
+  '97': 3004032,
+  '77': 17437530,
 };
 
 
 const BPoolFactory_Address = {
+  '1':'0xbe0083053744ecb871510c88dc0f6b77da162706',
   '4':'0x53edf9289b0898e1652ce009aacf8d25fa9a42f8',
-  '80001':'0x84CE0eA212F8C5567A3f68deDE1b2feb57dEb170',
-  '97':'0x27Db02024057F33B2cDf1519363db9769C87DCda',
-  '77':'0xc098C06c4F5Dc342e824ACCDA41DEf886c40b9e2'
+  '80001':'0x2D5D1DD0cCF6d4C4EA64523E1D768856aF011709',
+  '97':'0x055547ef91aF33FbF207c8A1e4d6227cf46a1D64',
+  '77':'0x055547ef91aF33FbF207c8A1e4d6227cf46a1D64'
 };
 
 const BPoolFactory_BlkNumber = {
+  '1': 11105585,
   '4': 7298806,
-  '80001': 5465849,
-  '97': 2741681,
-  '77': 17280909,
+  '80001': 5848033,
+  '97': 3004024,
+  '77': 17437527,
 };
 
 
@@ -178,9 +186,7 @@ const DTFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getCurrentTokenCount",
     "outputs": [
       {
@@ -194,9 +200,7 @@ const DTFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getTokenTemplate",
     "outputs": [
       {
@@ -236,9 +240,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "totalSupply",
     "outputs": [
       {
@@ -279,9 +281,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BASE_MARKET_FEE_PERCENTAGE",
     "outputs": [
       {
@@ -383,9 +383,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BASE_COMMUNITY_FEE_PERCENTAGE",
     "outputs": [
       {
@@ -422,9 +420,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BASE",
     "outputs": [
       {
@@ -676,9 +672,7 @@ const DataTokenTemplate_ABI = [
       }
     ],
     "name": "mint",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -704,9 +698,7 @@ const DataTokenTemplate_ABI = [
       }
     ],
     "name": "startOrder",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -732,9 +724,7 @@ const DataTokenTemplate_ABI = [
       }
     ],
     "name": "finishOrder",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -748,31 +738,23 @@ const DataTokenTemplate_ABI = [
       }
     ],
     "name": "proposeMinter",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "approveMinter",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "name",
     "outputs": [
       {
@@ -786,9 +768,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "symbol",
     "outputs": [
       {
@@ -802,9 +782,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "blob",
     "outputs": [
       {
@@ -818,9 +796,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "decimals",
     "outputs": [
       {
@@ -834,9 +810,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "cap",
     "outputs": [
       {
@@ -869,9 +843,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "minter",
     "outputs": [
       {
@@ -885,9 +857,7 @@ const DataTokenTemplate_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "isInitialized",
     "outputs": [
       {
@@ -1059,9 +1029,7 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "create",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1129,18 +1097,14 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "swap",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getNumberOfExchanges",
     "outputs": [
       {
@@ -1165,9 +1129,7 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "setRate",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1181,9 +1143,7 @@ const FixedRateExchange_ABI =  [
       }
     ],
     "name": "toggleExchangeState",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1267,9 +1227,7 @@ const FixedRateExchange_ABI =  [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getExchanges",
     "outputs": [
       {
@@ -1305,9 +1263,7 @@ const FixedRateExchange_ABI =  [
 const BPool_ABI = [
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "name",
     "outputs": [
       {
@@ -1344,9 +1300,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_TOTAL_WEIGHT",
     "outputs": [
       {
@@ -1360,9 +1314,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "totalSupply",
     "outputs": [
       {
@@ -1376,9 +1328,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BPOW_PRECISION",
     "outputs": [
       {
@@ -1392,9 +1342,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_WEIGHT",
     "outputs": [
       {
@@ -1435,9 +1383,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "decimals",
     "outputs": [
       {
@@ -1532,9 +1478,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_FEE",
     "outputs": [
       {
@@ -1626,9 +1570,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BALANCE",
     "outputs": [
       {
@@ -1681,9 +1623,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "INIT_POOL_SUPPLY",
     "outputs": [
       {
@@ -1697,9 +1637,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "symbol",
     "outputs": [
       {
@@ -1713,9 +1651,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_OUT_RATIO",
     "outputs": [
       {
@@ -1787,9 +1723,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_BOUND_TOKENS",
     "outputs": [
       {
@@ -1803,9 +1737,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BOUND_TOKENS",
     "outputs": [
       {
@@ -1819,9 +1751,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BPOW_BASE",
     "outputs": [
       {
@@ -1874,9 +1804,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_FEE",
     "outputs": [
       {
@@ -1890,9 +1818,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_BPOW_BASE",
     "outputs": [
       {
@@ -1906,9 +1832,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BONE",
     "outputs": [
       {
@@ -1922,9 +1846,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "EXIT_FEE",
     "outputs": [
       {
@@ -1984,9 +1906,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_WEIGHT",
     "outputs": [
       {
@@ -2000,9 +1920,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_IN_RATIO",
     "outputs": [
       {
@@ -2054,9 +1972,7 @@ const BPool_ABI = [
     "type": "function"
   },
   {
-    "inputs": [
-
-    ],
+    "inputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -2205,9 +2121,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "isInitialized",
     "outputs": [
       {
@@ -2287,18 +2201,14 @@ const BPool_ABI = [
       }
     ],
     "name": "setup",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "isPublicSwap",
     "outputs": [
       {
@@ -2312,9 +2222,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "isFinalized",
     "outputs": [
       {
@@ -2347,9 +2255,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getNumTokens",
     "outputs": [
       {
@@ -2363,9 +2269,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getCurrentTokens",
     "outputs": [
       {
@@ -2379,9 +2283,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getFinalTokens",
     "outputs": [
       {
@@ -2414,9 +2316,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getTotalDenormalizedWeight",
     "outputs": [
       {
@@ -2468,9 +2368,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getSwapFee",
     "outputs": [
       {
@@ -2484,9 +2382,7 @@ const BPool_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "getController",
     "outputs": [
       {
@@ -2507,9 +2403,7 @@ const BPool_ABI = [
       }
     ],
     "name": "setSwapFee",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2523,9 +2417,7 @@ const BPool_ABI = [
       }
     ],
     "name": "setController",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2539,22 +2431,16 @@ const BPool_ABI = [
       }
     ],
     "name": "setPublicSwap",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "finalize",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2576,9 +2462,7 @@ const BPool_ABI = [
       }
     ],
     "name": "bind",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2600,9 +2484,7 @@ const BPool_ABI = [
       }
     ],
     "name": "rebind",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2616,9 +2498,7 @@ const BPool_ABI = [
       }
     ],
     "name": "unbind",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2632,9 +2512,7 @@ const BPool_ABI = [
       }
     ],
     "name": "gulp",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2698,9 +2576,7 @@ const BPool_ABI = [
       }
     ],
     "name": "joinPool",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2718,9 +2594,7 @@ const BPool_ABI = [
       }
     ],
     "name": "exitPool",
-    "outputs": [
-
-    ],
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2916,9 +2790,7 @@ const BPool_ABI = [
 const BPoolFactory_ABI = [
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_TOTAL_WEIGHT",
     "outputs": [
       {
@@ -2932,9 +2804,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BPOW_PRECISION",
     "outputs": [
       {
@@ -2948,9 +2818,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_WEIGHT",
     "outputs": [
       {
@@ -2964,9 +2832,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_FEE",
     "outputs": [
       {
@@ -2980,9 +2846,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BALANCE",
     "outputs": [
       {
@@ -2996,9 +2860,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "INIT_POOL_SUPPLY",
     "outputs": [
       {
@@ -3012,9 +2874,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_OUT_RATIO",
     "outputs": [
       {
@@ -3028,9 +2888,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_BOUND_TOKENS",
     "outputs": [
       {
@@ -3044,9 +2902,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BOUND_TOKENS",
     "outputs": [
       {
@@ -3060,9 +2916,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MIN_BPOW_BASE",
     "outputs": [
       {
@@ -3076,9 +2930,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "bpoolTemplate",
     "outputs": [
       {
@@ -3092,9 +2944,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_FEE",
     "outputs": [
       {
@@ -3108,9 +2958,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_BPOW_BASE",
     "outputs": [
       {
@@ -3124,9 +2972,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "BONE",
     "outputs": [
       {
@@ -3140,9 +2986,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "EXIT_FEE",
     "outputs": [
       {
@@ -3156,9 +3000,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_WEIGHT",
     "outputs": [
       {
@@ -3172,9 +3014,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": true,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "MAX_IN_RATIO",
     "outputs": [
       {
@@ -3245,9 +3085,7 @@ const BPoolFactory_ABI = [
   },
   {
     "constant": false,
-    "inputs": [
-
-    ],
+    "inputs": [],
     "name": "newBPool",
     "outputs": [
       {
@@ -3260,4 +3098,3 @@ const BPoolFactory_ABI = [
     "type": "function"
   }
 ]
-
