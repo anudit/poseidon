@@ -31,15 +31,35 @@ async function refreshUI(_tokenData){
     document.querySelector('#tokenCreatorExplorerLink').setAttribute('href',`${chainExplorers[netId]}/address/${_tokenData.registeredBy}` )
 
     dataTokenBlob(pageTokenData.tokenAddress).then((blobData)=>{
-        window.blobData = blobData;
-        getIPFS(blobData).then((jsonData)=>{
-            window.pageTokenInfo = jsonData;
-            // console.log(jsonData);
-            document.querySelector('#tokenDescription').innerText = jsonData.dataDescription;
-            document.querySelector('#tokenType').innerText = jsonData.dataType;
-            document.querySelector('#tokenLicense').innerText = jsonData.dataLicense;
-            document.querySelector('#created').innerText = new Date(jsonData.created).toLocaleDateString();
-        });
+        if(blobData.trim() !== ''){
+            window.blobData = blobData;
+            getIPFS(blobData).then((jsonData)=>{
+                window.pageTokenInfo = jsonData;
+                // console.log(jsonData);
+                document.querySelector('#tokenDescription').innerText = jsonData.dataDescription;
+                document.querySelector('#tokenType').innerText = jsonData.dataType;
+                document.querySelector('#tokenLicense').innerText = jsonData.dataLicense;
+                document.querySelector('#created').innerText = new Date(jsonData.created).toLocaleDateString();
+            });
+        }
+        else{
+            document.querySelector('#openOnIpfsFrame').remove();
+            fetch('https://aquarius.mainnet.oceanprotocol.com/api/v1/aquarius/assets/ddo/query')
+            .then(response => response.json())
+            .then(data => {
+                data.results.forEach(jsonData=>{
+                    if(jsonData.dataToken.toLowerCase() == getParameterByName('add').toLowerCase()){
+                        window.blobData = jsonData;
+                        document.querySelector('#tokenDescription').innerText = jsonData.service[0].attributes.additionalInformation.description;
+                        document.querySelector('#tokenType').innerText = jsonData.service[0].attributes.main.type;
+                        document.querySelector('#tokenLicense').innerText = 'Unknown';
+                        document.querySelector('#created').innerText = new Date(jsonData.created).toLocaleDateString();
+                    }
+                })
+
+            });
+        }
+
     });
     dataTokenBalanceOf(_tokenData.tokenAddress).then((balance)=>{
         document.querySelector('#userBalance').innerText = numberWithCommas(parseFloat(balance).toFixed(3)) + ' ' + _tokenData.tokenSymbol;
@@ -48,7 +68,12 @@ async function refreshUI(_tokenData){
 }
 
 function downloadSample(){
-    window.open(`${pageTokenInfo.dataSample}`, '_blank');
+    if(Object.keys(pageTokenData).includes('createdBy') === true){
+        window.open(pageTokenInfo.dataSample, '_blank');
+    }
+    else{
+        window.open(blobData.service[0].attributes.additionalInformation.links[0].url, '_blank');
+    }
 }
 
 function openOnIPFS(){

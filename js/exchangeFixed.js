@@ -189,7 +189,7 @@ async function setupExchangeUI(){
     let fe = document.querySelector('#fromExchangeList');
 
     getExchangesCreated().then(async (exchanges)=>{
-        // console.log(exchanges);
+        console.log(exchanges);
         await sleep(2000);
         fe.innerHTML = `<option value="">Choose an Exchange</option>`;
         exchanges.forEach((exchange) => {
